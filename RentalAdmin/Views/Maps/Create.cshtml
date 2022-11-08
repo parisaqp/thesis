@@ -1,0 +1,70 @@
+﻿@model RentalAdmin.Models.Map
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("create", "maps", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input hidden id="forienid" value="@ViewBag.forienid" name="forienid" />
+    <input hidden id="source" value="@ViewBag.source" name="source" />
+    <input hidden id="redirect" value="@ViewBag.redirect" name="redirect" />
+    <div class="form-horizontal">
+        <h4>Map</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MapGoogleLink, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.MapGoogleLink, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MapGoogleLink, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MapWidth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MapWidth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MapWidth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MapZoom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MapZoom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MapZoom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.Partial("_UploadImage",
+       new RentalAdmin.Models.UploadImageModel {htmlId= "smallimage"
+       , htmlName= "smallimage",
+       obname="عکس کوچک"
+       })
+
+        @Html.Partial("_UploadImage",
+   new RentalAdmin.Models.UploadImageModel {htmlId= "bigimage"
+   , htmlName= "bigimage",
+   obname="عکس بزرگ"
+   })
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

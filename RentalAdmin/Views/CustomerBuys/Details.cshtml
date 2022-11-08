@@ -1,0 +1,139 @@
+﻿@model RentalAdmin.Models.CustomerBuy
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CustomerBuy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstCallDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstCallDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AboutCustomer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerBudget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerBudget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerProcess)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerProcess)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerNextAlertToEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerNextAlertToEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerCountryFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerCountryFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerNation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerNation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerHasBuyed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerHasBuyed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WhatAmountIsForUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WhatAmountIsForUs)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerBuyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,193 @@
+﻿@model RentalAdmin.Models.Property
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Property</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsExpired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsExpired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsertDatetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsertDatetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsSpecial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsSpecial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WhyIsSpecial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WhyIsSpecial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertySpace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertySpace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyRoom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyRoom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyPool)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyPool)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyFloor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyFloor)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyUnitsPerFloor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyUnitsPerFloor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyParkingNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyParkingNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertySauna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertySauna)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyJacuzzi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyJacuzzi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyRoofGarden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyRoofGarden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyHasLobby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyHasLobby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyHasLobbyMan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyHasLobbyMan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyHasGaurd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyHasGaurd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyHasGym)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyHasGym)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area.AreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area.AreaName)
+        </dd>
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyType.PropertyTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyType.PropertyTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PropertyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

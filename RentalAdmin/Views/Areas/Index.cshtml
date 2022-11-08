@@ -1,0 +1,71 @@
+﻿@model IEnumerable<RentalAdmin.Models.Area>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaSlug)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaNameInPersian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaSeoTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Map.MapID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaSlug)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaNameInPersian)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaSeoTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Map.MapID)
+        </td>
+        <td>
+            @Html.ActionLink("addmap", "create","maps", new { forienid = item.AreaID, source="area" ,redirect= @Request.Url.AbsoluteUri },null) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.AreaID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AreaID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AreaID })
+        </td>
+    </tr>
+}
+
+</table>

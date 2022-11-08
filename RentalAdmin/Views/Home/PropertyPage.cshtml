@@ -1,0 +1,757 @@
+﻿@model RentalAdmin.Models.PageViewModel.PropertyViewModel
+@{
+
+    ViewBag.Title = Model.property.getName();
+    ViewBag.NavBar = "dark";
+
+    ViewBag.canonicalLink = Model.property.getURl();
+
+    ViewBag.HasMetaValue = true;
+    ViewBag.ImageURL = Model.getFirstPic();
+    ViewBag.Title = Model.property.getName();
+    ViewBag.SubTitle = Model.property.getDescriptionMeta();
+    ViewBag.URL = Model.property.getURl();
+    string gtin8 = Model.property.PropertyOurCode.ToString("D" + 8);
+}
+@section AddToHead
+{
+    <!-- Event snippet for Website traffic conversion page -->
+    <script>gtag('event', 'conversion', { 'send_to': 'AW-608539095/EQbfCPCKwNkBENejlqIC' });</script>
+
+    <link href="~/customecontent/propertypage.css" rel="stylesheet" />
+
+
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type":"Product",
+        "name": "@Model.property.getName()",
+        "image": "@Model.property.PropertyImageAddress",
+        "description": "@Model.property.getDescription()",
+        "sku":@Model.property.PropertyOurCode,
+        "brand": {
+        "@@type": "Brand",
+        "name": "@Model.property.Area.AreaName"
+        },
+        "offers":
+        {
+        "@@type": "Offer",
+        "price": "@Model.property.PropertyPrice",
+        "priceCurrency": "USD",
+        "priceValidUntil": "@System.DateTime.Now.Year.ToString()-@((System.DateTime.Now.Month + 1).ToString())-1",
+        "url":"@Model.property.getURl()",
+        "availability": "https://schema.org/InStock"
+        },
+        "url":"@Model.property.getURl()",
+        "gtin8":"@gtin8"
+        }
+    </script>
+    @if (Model.propertyType.PropertyIsApartment)
+    {
+        <script type="application/ld+json">
+            {
+            "@@context": "https://schema.org/",
+            "@@type": "Apartment",
+            "numberOfBedrooms":@Model.property.PropertyRoom,
+            "yearBuilt":@Model.property.PropertyAge,
+
+            "address": {
+            "@@type": "PostalAddress",
+            "addressCountry": "Iran",
+            "addressLocality": "@Model.region.getName()",
+            "addressRegion": "Tehran"
+            },
+            "image": "@Model.property.PropertyImageAddress",
+            "name": "@Model.property.getName()",
+            "description": "@Model.property.getDescription()",
+            "url": "@Model.property.getURl()"
+            }
+        </script>
+    }
+    else if (Model.propertyType.PropertyIsHouse)
+    {
+        <script type="application/ld+json">
+            {
+            "@@context": "http://schema.org",
+            "@@type": "House",
+            "yearBuilt":@Model.property.PropertyAge,
+            "address": {
+            "@@type": "PostalAddress",
+            "addressCountry": "Iran",
+            "addressLocality": "@Model.region.getName()",
+            "addressRegion": "Tehran"
+            },
+            "image": "@Model.property.PropertyImageAddress",
+            "name": "@Model.property.getName()",
+            "description": "@Model.property.getDescription()",
+            "url": "@Model.property.getURl()"
+            }
+        </script>
+    }
+}
+@section scripts{
+    @*<script>
+        $('.carouselExampleIndicators').carousel({
+            interval: 9000
+        })
+        $(document).ready(function () {
+            $("#carouselExampleIndicators").carousel('prev');
+            $("#carouselExampleIndicators").carousel('next');
+            
+        });
+    </script>*@
+}
+@* **************************************************** *@
+
+<section id="propertyInfo" class="container-fluid my-4">
+
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="propertyInfo_Header_title">@Model.property.getName()</h1>
+        </div>
+        <div class="col-md-4">
+            <row>
+                <div class="col"><p class="ID1850__Per_month">@if (Model.property.PropertyIsShortTerm && Model.property.PropertyPriceShortMonthly > 0) {<span class=""> M: $@Model.property.getPriceShort()</span>}
+               @if (Model.property.PropertyIsShortTerm &&Model.property.PropertyPriceShortDaily>0) {<span class=""> D: $@Model.property.getPriceShortDaily() </span>}
+                @if(!Model.property.PropertyIsShortTerm) {<span class="">$@Model.property.getPrice()  per month </span>}   
+                     @if (Model.property.PropertyIsShortTerm)
+                     { <span>(Short-Term)</span>}
+                     else { <span>(Long-Term)</span>}</p></div>
+                
+    @*<div class="col">
+                        <svg class="share" viewBox="0.001 0.5 40.723 37.14">
+                            <path id="share" d="M 40.72351837158203 19.05752944946289 L 23.79991912841797 0.5 L 23.79991912841797 11.57176303863525 C 9.044941902160645 11.57176303863525 0.000732421875 20.6159725189209 0.000732421875 37.64022827148438 L 1.598928928375244 35.88886642456055 C 7.032597541809082 29.93541145324707 14.72091102600098 26.54329299926758 22.78149223327637 26.54329299926758 L 23.79993438720703 26.54329299926758 L 23.79993438720703 37.61505126953125 L 40.72351837158203 19.05752944946289 Z M 40.72351837158203 19.05752944946289">
+                            </path>
+                        </svg>
+                    </div>*@
+            </row>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="text-center background-light-transparent">
+
+                <div id="carouselExampleIndicators" class="carousel slide"  data-touch="true" data-ride="carousel" data-interval="9000">
+                    <ol class="carousel-indicators">
+                        @if (Model.allPic != null && Model.allPic.Count > 0)
+                        {
+                            int i = 0;
+                            foreach (var item in Model.allPic)
+                            {
+                                <li data-target="#carouselExampleIndicators" data-slide-to="@i" class="@(i==0?"active":"")"></li>
+                                i++;
+                            }
+                        }
+                    </ol>
+                    <div class="carousel-inner">
+                        @if (Model.allPic != null && Model.allPic.Count > 0)
+                        {
+                            int i = 0;
+                            foreach (var item in Model.allPic)
+                            {
+                                <div class="carousel-item @(i==0?"active":"")">
+                                    <img class="d-block carouselimg" src="@item.Upload.GetPublicUrl()" alt="@(Model.property.getName()+" "+ i.ToString())">
+                                </div>
+                                i++;
+                            }
+                        }
+                    </div>
+                    <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon background-light-transparent" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon background-light-transparent" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 my-2">
+
+            <div class="row justify-content-center">
+                @if (Model.property.PropertyRoom > 0)
+                {
+                    <div class="col-md-2 propertyBox text-center py-2">
+                        <div class="countableitem">
+                            <div> <img src="~/img/property/icons/bed.png" class="icon-property" alt="property bedroom numbers" /></div>
+                            <p class="ID2_Bedrooms">
+                                <span class="numberstrong">@Model.property.PropertyRoom</span>
+                                @RentalAdmin.helper.StringNumberConvertot.GetPlural("Bedroom", Model.property.PropertyRoom)
+                            </p>
+                        </div>
+
+                    </div>
+                }
+
+                @if (Model.property.PropetryBathRooms > 1)
+                {
+                    <div class="col-md-2 propertyBox text-center py-2 ">
+                        <div class="text-center m-auto countableitem"> <img src="~/img/property/icons/bathtub-with-opened-shower.png" alt="house parking" class="icon-property" /></div>
+                        <p class="ID2_Bedrooms">
+                            <span class="numberstrong">@Model.property.PropetryBathRooms</span>
+                            @RentalAdmin.helper.StringNumberConvertot.GetPlural("Bathroom", Model.property.PropetryBathRooms)
+                        </p>
+                    </div>
+                }
+                @if (Model.property.PropertySpace > 0)
+                {
+                    <div class="col-md-2 propertyBox text-center py-2">
+                        <div class="text-center m-auto countableitem">
+                            <div>
+                                <img src="~/img/property/icons/assembly-area.png" alt="property area" class="icon-property" />
+                            </div>
+                            <p class="ID2_Bedrooms"><span class="numberstrong">@Model.property.PropertySpace</span> m<sup>2</sup> </p>
+                        </div>
+
+                    </div>
+                }
+                @if  (!Model.property.PropertyIsShortTerm&& Model.property.PropertyFloor > 0 && Model.property.PropertyAllFloor > 0)
+                {
+                    <div class="col-md-2 propertyBox text-center py-2 ">
+                        <div class="text-center m-auto countableitem">
+                            <div> <img src="~/img/property/icons/elevator.png" alt="apartment floors" class="icon-property" /></div>
+                            <p class="ID2_Bedrooms"><strong>@Model.property.getFloor()</strong> Floor<br />of <span class="numberstrong">@Model.property.PropertyAllFloor</span>@RentalAdmin.helper.StringNumberConvertot.GetPlural("Floor", Model.property.PropertyAllFloor)</p>
+                        </div>
+
+                    </div>
+                }
+
+                <div class="col-md-2 propertyBox text-center py-2 ">
+                    <div class="text-center m-auto countableitem"> <img src="~/img/property/icons/calendar.png" alt="property years" class="icon-property" /></div>
+                    <p class="ID2_Bedrooms">
+                        <span class="numberstrong">@Model.property.PropertyAge</span>
+                        @RentalAdmin.helper.StringNumberConvertot.GetPlural("Year", Model.property.PropertyAge)
+                    </p>
+                </div>
+                @if (!Model.property.PropertyIsShortTerm&& Model.property.PropertyParkingNumber > 0)
+                {
+                    <div class="col-md-2 propertyBox text-center py-2 ">
+                        <div class="text-center m-auto countableitem"> <img src="~/img/property/icons/park.png" alt="house parking" class="icon-property" /></div>
+                        <p class="ID2_Bedrooms">
+                            <span class="numberstrong">@Model.property.PropertyParkingNumber</span>
+                            @RentalAdmin.helper.StringNumberConvertot.GetPlural("Parking", Model.property.PropertyParkingNumber)
+                        </p>
+                    </div>
+                }
+                @if (!Model.property.PropertyIsShortTerm)
+                {
+                    <div class="col-md-2 propertyBox text-center py-2 ">
+                        <div class="text-center m-auto countableitem"> <img src="~/img/property/icons/Group 509.png" alt="apartment unit per floor" class="icon-property" /></div>
+                        <p class="ID2_Bedrooms">
+                            <span class="numberstrong">  @(Model.property.PropertyUnitsPerFloor == 0 ? 1 : Model.property.PropertyUnitsPerFloor)</span>
+                            @RentalAdmin.helper.StringNumberConvertot.GetPlural("Unit", Model.property.PropertyUnitsPerFloor)<br /> Per Floor
+                        </p>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+
+        @*<div class="col-md-4">
+                <div class="text-center">
+                    @if (Model.property.Map != null && Model.property.Map.UploadBig != null)
+                    {
+                        <img src="@Model.property.Map.UploadBig.GetPublicUrl()" class="rounded img-fluid" alt="...">
+                    }
+                </div>
+                <h3 class="under_map_title my-2">@Model.property.PropertyPrice $ Per month</h3>
+                <p class="under_map_comment">Please call for more information</p>
+                <a class="under_map_tel" href="callto:+@RentalAdmin.Models.StaticList.PhoneNumber">+@RentalAdmin.Models.StaticList.PhoneNumberToShow</a>
+                <ul class="under_map_list">
+                    <li class="under_map_list_item">
+                        <img src="~/img/property/bed.png" class="img-fluid" alt="Alternate Text" /><span>@Model.property.PropertyRoom Bedrooms</span>
+                    </li>
+                    <li class="under_map_list_item">
+                        <img src="~/img/property/bathtub-with-opened-shower.png" class="img-fluid" alt="Alternate Text" /><span>@Model.property.PropertyParkingNumber Parking</span>
+                    </li>
+                    <li class="under_map_list_item">
+                        <img src="~/img/property/assembly-area.png" class="img-fluid" alt="Alternate Text" /><span>@Model.property.PropertySpace mm</span>
+                    </li>
+                </ul>
+            </div>*@
+    </div>
+
+    <div class="row propertydetails my-2">
+        <div class="col-md-8">
+            <p class="propertyInfo_title_comment">
+                @Model.property.getDescription()
+            </p>
+            <p class="propertyInfo_title_comment"> The @Model.property.PropertyType.PropertyTypeName is located in <a href="@Model.region.getURl()">@Model.region.AreaName</a> neighborhood</p>
+
+            @if (!string.IsNullOrEmpty(Model.property.PropertyDescription))
+            {
+                <p class="propertyInfo_title_comment">
+                    @Model.property.PropertyDescription
+                </p>
+            }
+            <div class="bags row justify-content-center ">
+                <div class="col">
+                    @if (Model.property.PropertyHasGaurd)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <span class="Rectangle_48_title">Gaurd</span>
+                            <span class="float-right">
+                                <img src="~/img/property/checked.png" class="img-fluid"  loading="lazy" alt="apartment has gaurd" />
+                            </span>
+                        </div>
+                    }
+                    @if (Model.property.PropertyHasGym)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <span class="Rectangle_48_title">Gym</span>
+                            <span class="float-right">
+                                <img src="~/img/property/checked.png" class="img-fluid" loading="lazy" alt="apartment has gym" />
+                            </span>
+                        </div>
+                    }
+                    @if (Model.property.PropertyHasLobby)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <span class="Rectangle_48_title">Lobby</span>
+                            <span class="float-right">
+                                <img src="~/img/property/checked.png" class="img-fluid" alt=" apartment has lobby" />
+                            </span>
+                        </div>
+                    }
+                    @if (Model.property.PropertyHasLobbyMan)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <span class="Rectangle_48_title">Lobby Man</span>
+                            <span class="float-right">
+                                <img src="~/img/property/checked.png" class="img-fluid" alt="apartment has lobby man" />
+                            </span>
+                        </div>
+                    }
+                    @if (Model.property.PropertyJacuzzi)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <span class="Rectangle_48_title">Jacuzzi</span>
+                            <span class="float-right">
+                                <img src="~/img/property/checked.png" class="img-fluid" alt="apartment has jacuzzi" />
+                            </span>
+                        </div>
+                    }
+                    @if (Model.property.PropertySauna)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <span class="Rectangle_48_title">Sauna</span>
+                            <span class="float-right">
+                                <img src="~/img/property/checked.png" class="img-fluid" alt="apartment has sauna" />
+                            </span>
+                        </div>
+                    }
+                    @if (Model.property.PropertyPool)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <span class="Rectangle_48_title">Pool</span>
+                            <span class="float-right">
+                                <img src="~/img/property/checked.png" class="img-fluid" alt="property has pool" />
+                            </span>
+                        </div>
+                    }
+                    @if (Model.property.PropertyRoofGarden)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <span class="Rectangle_48_title">Roof garden</span>
+                            <span class="float-right">
+                                <img src="~/img/property/checked.png" class="img-fluid" alt="apartment has roof garden" />
+                            </span>
+                        </div>
+                    }
+
+                    @if (Model.allMetro != null && Model.allMetro.Count > 0)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <p class="Nearbyhead">Nearby Metros<span class="float-right"> (@Model.allMetro.Count Metros) </span></p>
+                            <ul>
+                                @foreach (var item in Model.allMetro)
+                                {
+                                    <li>@item.MetroName</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                </div>
+                <div class="col">
+                    @if (Model.allEmbassy != null && Model.allEmbassy.Count > 0)
+                    {
+                        <div class="Rectangle_48 p-2 m-2 col">
+                            <p class="Nearbyhead">Nearby Embassies<span class="float-right"> (@Model.allEmbassy.Count Countries) </span></p>
+                            <ul>
+                                @foreach (var item in Model.allEmbassy)
+                                {
+                                    <li><a href="@item.getURl()" target="_blank"> @item.EmbassyName</a></li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 my-2">
+            @*new change*@
+            <div class="card col">
+                <p class="card-title text-center mt-3 Do_you_need_more_information"><strong>Contact Us</strong></p>
+                <div class="card-body">
+                    <div class="col bg-gray rounded my-2 p-2">
+                        <img src="~/img/property/icons/whatsappgreenop1.png" class="icon-send-message" alt="whatsapp icon" />
+                   
+                        <a href="https://wa.me/@(RentalAdmin.Models.StaticList.PhoneNumber)/?text=@("Hi I am interested in property number "+ Model.property.PropertyOurCode+".")" class="Send_with_E-mail" target="_blank"><span class="numberstrong">WhatsApp</span></a>
+
+
+                    </div>
+                    <div class="horizontal-line-parent"><span class="horizontal-line-child">OR</span> </div>
+                    <form action="~/home/ContactPost" method="post">
+                        @*@Html.AntiForgeryToken()*@
+                        <input hidden value="@Request.Url.PathAndQuery" name="returnurl" />
+
+                        <div class="form-group">
+                            <input name="name" type="text" class="form-control" id="" placeholder="name">
+                        </div>
+                        <div class="form-group">
+                            <input name="emailFrom" type="email" class="form-control" id="" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="messagestr" class="form-control" rows="3"> </textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="col bg-gray rounded my-2 p-2">
+                                <img src="~/img/property/icons/mailblack3.png" class="icon-send-message" alt="email icon" />
+                                <button type="submit" class="Send_with_E-mail">Email</button>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+
+
+                </div>
+            </div>
+            @*end new chagne*@
+            @if (Model.map != null && Model.map.UploadBig != null)
+            {
+                <div class="row">
+                    <div class="col">
+                        <img src="@Model.map.UploadBig.GetPublicUrl()" alt="apartment map" class="img-fluid" />
+                    </div>
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+</section>
+@if (Model.sameProperties != null && Model.sameProperties.Count() > 0)
+{
+    <section id="homeBox" class="container-fluid">
+        <div class="row tobblog_header p-4 justify-content-center align-items-center">
+            <div class="col-md-auto"><h5 class="other_property_title">Similar Properties</h5></div>
+            <div class="col-md"><hr class="other_property_hr" /></div>
+
+            <div class="col-md-auto" id="See_All_Blogs">
+                <span class="See_All_Same_Property">
+                    <a target="_blank" href="https://www.rentalir.com/home/SearchPage?AreaName=@Model.property.Area.AreaName&PropertyBedroomList=@Model.property.PropertyRoom&PropertyBedroomList=@(Model.property.PropertyRoom+1)&pricemin=@Model.minprice&pricemax=@Model.maxprice
+">Search more</a>
+                </span><span class="ml-auto">
+                    <svg class="Polygon_7" viewBox="0 0 11 9">
+                        <path fill="rgba(112,112,112,1)" id="Polygon_7" d="M 5.499999523162842 0 L 11 9 L 0 9 Z">
+                        </path>
+                    </svg>
+                </span>
+            </div>
+
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model.sameProperties)
+            {
+                <div class="col-md-6 col-lg-4 col-xl-3 ">
+                    @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                </div>
+            }
+
+
+        </div>
+    </section>
+}
+
+@if (Model.samePropertiesNearNeighborhood != null && Model.samePropertiesNearNeighborhood.Count() > 0)
+{
+    <section id="homeBox" class="container-fluid">
+        <div class="row tobblog_header p-4 justify-content-center align-items-center">
+            <div class="col-md-auto"><h5 class="other_property_title">Similar Properties in Near Neighborhoods</h5></div>
+            <div class="col-md"><hr class="other_property_hr" /></div>
+
+            <div class="col-md-auto" id="See_All_Blogs">
+                <span class="See_All_Same_Property">
+                    <a target="_blank" href="https://www.rentalir.com/home/SearchPage?AreaName=@Model.regionWithRelated.AreaRelated&PropertyBedroomList=@Model.property.PropertyRoom&PropertyBedroomList=@(Model.property.PropertyRoom+1)&pricemin=@Model.minprice&pricemax=@Model.maxprice
+">Search more</a>
+                </span><span class="ml-auto">
+                    <svg class="Polygon_7" viewBox="0 0 11 9">
+                        <path fill="rgba(112,112,112,1)" id="Polygon_7" d="M 5.499999523162842 0 L 11 9 L 0 9 Z">
+                        </path>
+                    </svg>
+                </span>
+            </div>
+
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model.samePropertiesNearNeighborhood)
+            {
+                <div class="col-md-6 col-lg-4 col-xl-3 ">
+                    @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                </div>
+            }
+
+
+        </div>
+    </section>
+}
+
+@*<section id="TOPBLOGS" class="container mb-5">
+        <div class="row tobblog_header p-4 justify-content-center align-items-center">
+            <div class="col-md-auto"><h3 class="other_property_title">Other Property In This Region</h3></div>
+            <div class="col-md"><hr class="other_property_hr" /></div>
+            <div class="col-md-auto" id="See_All_Blogs">
+                <span class="See_All_Same_Property">See All</span><span class="ml-auto">
+                    <svg class="Polygon_7" viewBox="0 0 11 9">
+                        <path fill="rgba(112,112,112,1)" id="Polygon_7" d="M 5.499999523162842 0 L 11 9 L 0 9 Z">
+                        </path>
+                    </svg>
+                </span>
+            </div>
+        </div>
+
+        <div class="tobblog_context">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="item-box">
+                        <div class="item-box-image">
+                            <a href="">
+                                <div class="text-center">
+                                    <img class="img-fluid rounded" src="~/img/download.png" />
+                                    <div class="item-box-image-tags">
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        <span>22 effected</span>
+                                    </div>
+                                    <div class="item-box-image-tags">
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        <span>22 BEDROOMS</span>
+                                    </div>
+                                    <div class="item-box-image-tags">
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        <span>22 BEDROOMS</span>
+                                    </div>
+
+                                </div>
+                            </a>
+
+
+                        </div>
+                        <div class="item-box-content ">
+                            <a href="#"> <h4 class="item-box-content-title">Niyavaran</h4></a>
+                            <p class="item-box-content-price">$2,500</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item-box">
+                        <div class="item-box-image">
+                            <a href="">
+                                <div class="text-center">
+                                    <img class="img-fluid rounded" src="~/img/download.png" />
+                                    <div class="item-box-image-tags">
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        <span>22 effected</span>
+                                    </div>
+                                    <div class="item-box-image-tags">
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        <span>22 BEDROOMS</span>
+                                    </div>
+                                    <div class="item-box-image-tags">
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        <span>22 BEDROOMS</span>
+                                    </div>
+
+                                </div>
+                            </a>
+
+
+                        </div>
+                        <div class="item-box-content ">
+                            <a href="#"> <h4 class="item-box-content-title">Niyavaran</h4></a>
+                            <p class="item-box-content-price">$2,500</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item-box">
+                        <div class="item-box-image">
+                            <a href="">
+                                <div class="text-center">
+                                    <img class="img-fluid rounded" src="~/img/download.png" />
+                                    <div class="item-box-image-tags">
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        <span>22 effected</span>
+                                    </div>
+                                    <div class="item-box-image-tags">
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        <span>22 BEDROOMS</span>
+                                    </div>
+                                    <div class="item-box-image-tags">
+                                        <i class="fa fa-bed" aria-hidden="true"></i>
+                                        <span>22 BEDROOMS</span>
+                                    </div>
+
+                                </div>
+                            </a>
+
+
+                        </div>
+                        <div class="item-box-content ">
+                            <a href="#"> <h4 class="item-box-content-title">Niyavaran</h4></a>
+                            <p class="item-box-content-price">$2,500</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="item-box">
+                        <div class="item-box-image">
+                            <div class="text-center">
+                                <img class="img-fluid rounded" src="/img/download.png">
+                                <div class="item-box-image-tags">
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    <span>2 BEDROOMS</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item-box-content text-center">
+                            <h4 class="item-box-content-title">Niyavaran</h4>
+                            <p class="item-box-content-price">$2,500</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item-box">
+                        <div class="item-box-image">
+                            <div class="text-center">
+                                <img class="img-fluid rounded" src="/img/download.png">
+                                <div class="item-box-image-tags">
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    <span>2 BEDROOMS</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item-box-content text-center">
+                            <h4 class="item-box-content-title">Niyavaran</h4>
+                            <p class="item-box-content-price">$2,500</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>*@
+
+@*<section id="TOPBLOGS" class="container mb-5">
+        <div class="row tobblog_header p-4 justify-content-center align-items-center">
+            <div class="col-md-auto"><h3 class="other_property_title">Related Blogs</h3></div>
+            <div class="col-md"><hr class="other_property_hr" /></div>
+            <div class="col-md-auto" id="">
+                <span class="See_All_Same_Property">See All Blogs</span><span class="ml-auto">
+                    <svg class="Polygon_7" viewBox="0 0 11 9">
+                        <path fill="rgba(112,112,112,1)" id="Polygon_7" d="M 5.499999523162842 0 L 11 9 L 0 9 Z">
+                        </path>
+                    </svg>
+                </span>
+            </div>
+        </div>
+
+        <div class="tobblog_context">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="tobblog-box">
+                        <div class="tobblog-box-image">
+                            <div class="text-center">
+                                <img class="img-fluid rounded" src="~/img/blog/ragnar_vorel_351414_unsplash.png" />
+                                <div class="tobblog-box-image-tags">
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    <span>2 BEDROOMS</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tobblog-content">
+                            <h4 class="tobblog-content-title">Bastille Day is the common name given in English-speaking </h4>
+                            <p class="tobblog-content-date"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 July 2020</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="tobblog-box">
+                        <div class="tobblog-box-image">
+                            <div class="text-center">
+                                <img class="img-fluid rounded" src="~/img/blog/ragnar_vorel_351414_unsplash.png" />
+                                <div class="tobblog-box-image-tags">
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    <span>2 BEDROOMS</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tobblog-content">
+                            <h4 class="tobblog-content-title">Bastille Day is the common name given in English-speaking </h4>
+                            <p class="tobblog-content-date"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 July 2020</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="tobblog-box">
+                        <div class="tobblog-box-image">
+                            <div class="text-center">
+                                <img class="img-fluid rounded" src="~/img/blog/ragnar_vorel_351414_unsplash.png" />
+                                <div class="tobblog-box-image-tags">
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    <span>2 BEDROOMS</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tobblog-content">
+                            <h4 class="tobblog-content-title">Bastille Day is the common name given in English-speaking </h4>
+                            <p class="tobblog-content-date"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 July 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+@* **************************************************** *@
+
+

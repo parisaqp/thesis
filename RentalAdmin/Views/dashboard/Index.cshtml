@@ -1,0 +1,50 @@
+﻿
+@model IEnumerable<RentalAdmin.Models.ContactU>
+
+@{
+    ViewBag.Title = "dashboard";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<h3>contact us</h3>
+<table class="table">
+    
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactUsName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactUsEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactUsMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactUsDate)
+        </th>
+    
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactUsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactUsEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactUsMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactUsDate)
+            </td>
+            
+        </tr>
+    }
+
+</table>
+

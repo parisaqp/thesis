@@ -1,0 +1,113 @@
+﻿@model IEnumerable<RentalAdmin.Models.PropertyGallery>
+@{
+    ViewBag.Title = "ارسال عکس";
+    Layout = "~/Views/Shared/_OldLayout.cshtml";
+    int newOrder = Model.Count();
+    int i = 0;
+}
+
+
+@section AddToHead
+{
+    <style>
+        hr {
+            display: block;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            margin-left: auto;
+            margin-right: auto;
+            border-style: inset;
+            border-width: 1px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+}
+
+<h2>@ViewBag.Title</h2>
+<form action="/agent/SendProperty2" method="post" enctype="multipart/form-data" id="form-gallery">
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    @Html.AntiForgeryToken()
+    @foreach (var item in Model)
+    {
+        <div style="height:150px; margin-bottom:20px">
+            @Html.Partial("_UploadImage", new RentalAdmin.Models.UploadImageModel() {
+           htmlId = "replaceImage" + i.ToString(),
+           htmlName = "replaceImage[" + i.ToString() + "]",
+           idNameHidden = "uploadID[]",
+           obname= "عکس " + (i+1).ToString(),
+            UploadOb=item.Upload
+       })
+        </div>
+
+        <input type="hidden" name="imageOrder[@i]" value="@item.PropertyGalleryOrder" max="200" min="0" />
+
+        <div class="form-group">
+            <span>حذف عکس</span>
+            <div class="col-md-10">
+                <input type="checkbox"
+                       value="@item.PropertyGalleryID"
+                       name="deleteimage" />
+            </div>
+        </div>
+        <hr />
+        i = i + 1;
+
+    }
+        <div id="newimagediv">
+            <div class="form-group" style="margin-bottom:20px">
+                <span>عکس 1:</span>
+                <div class="col-md-10">
+                    <input type="file" name="newImage[0]" id="newimage0" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="hidden" name="newImageOrder[0]" value="@newOrder" max="200" min="0" />
+                </div>
+
+            </div>
+            <hr />
+        </div>
+  
+    @*@for (int j = 0; j < 10; j++)
+        {
+            newOrder = newOrder + 1;
+            <div class="form-group" style="margin-bottom:20px">
+                <span>عکس @(j + 1):</span>
+                <div class="col-md-10">
+                    <input type="file" name="newImage[@j]" id="newimage@(i.ToString())" />
+                </div>
+            </div>
+            <div class="form-group">
+                <span>ترتیب نمیاش عکس</span>
+                <div class="col-md-10">
+                    <input type="number" name="newImageOrder[@j]" value="@newOrder" max="200" min="0" />
+                </div>
+
+            </div>
+            <hr />
+        }*@
+    <div class="addimagebtn p-4">
+        <button type="button" id="addimage" onclick="addimage()">افزودن عکس</button>
+    </div>
+    <input type="submit" name="submit" value="ذخیره عکس ها" class="btn-success" />
+</form>
+@section Scripts {
+<script>
+    var number = 1;
+    var newOrderjs =@newOrder;
+    $('#addimage').click(function () {
+        newOrderjs = newOrderjs + 1;
+        var newdiv1 = $("<div class='form-group' style='margin-bottom:20px'> <span>عکس " + (number+1).toString() + ":</span> <div class='col-md-10'> <input type='file' name='newImage[" + number.toString() + "]' id='newimage" + number.toString() + "' /> </div> </div> <div class='form-group'>  <div class='col-md-10'> <input type='hidden' name='newImageOrder[" + number.toString() + "]' value='" + newOrderjs.toString() + "' max='200' min='0' /> </div> </div> <hr />");
+
+        $("#newimagediv").append(newdiv1);
+        number = number + 1;
+    }
+    );
+   
+</script>
+}
+
+

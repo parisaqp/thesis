@@ -1,0 +1,88 @@
+﻿@model IEnumerable<RentalAdmin.Models.RequestApartment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PersonsCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MounthCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DaysCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WhenCome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Beds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PersonsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MounthCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaysCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhenCome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RequestApartmentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RequestApartmentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RequestApartmentID })
+        </td>
+    </tr>
+}
+
+</table>

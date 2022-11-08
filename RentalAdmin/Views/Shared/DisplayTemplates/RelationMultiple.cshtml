@@ -1,0 +1,11 @@
+﻿@{
+    var modelMetadata = ViewData.ModelMetadata;
+    var lookup = new RelationScaffolding.RelationCollectionHelper(ViewData).GetLookup();
+}
+
+<ul>
+    @foreach (var relationMemberLookup in lookup)
+    {
+        <li data-relation-key="@Html.AttributeEncode(relationMemberLookup.KeyMember.Value)">@relationMemberLookup.DisplayMember.Value</li>
+    }
+</ul>

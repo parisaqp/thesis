@@ -1,0 +1,103 @@
+﻿    <!DOCTYPE html>
+    <html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title | Rentalir</title>
+        <link rel="icon" href="~/img/favrental128.png" sizes="128x128" type="image/png">
+
+        <meta name="theme-color" content="#610388">
+        @if (!string.IsNullOrEmpty(ViewBag.canonicalLink))
+        {
+            //وقتی از چند ادرس به یک محتوا می شود رسید باید اون لینکی که مد نظر است تا به کاربران نشان داده شود را در هد و مانند زیر قرار داد
+            <link rel="canonical" href="@ViewBag.canonicalLink" />
+            @*<link rel="alternate" href="@ViewBag.canonicalLink" hreflang="fa" />*@
+            <meta name="googlebot" content="index,follow">
+
+        }
+        @if (ViewBag.HasMetaValue == true)
+        {
+
+            <meta property="og:type" content="website">
+            if (!string.IsNullOrEmpty(ViewBag.ImageURL))
+            {
+                <meta property="og:image" content="@ViewBag.ImageURL" />
+            }
+            if (!string.IsNullOrEmpty(ViewBag.Title))
+            {
+                <meta property="og:title" content="@ViewBag.Title" />
+            }
+            if (!string.IsNullOrEmpty(ViewBag.SubTitle))
+            {
+                <meta property="og:description" content="@ViewBag.SubTitle" />
+                <meta name="description" content="@ViewBag.SubTitle" />
+            }
+            if (!string.IsNullOrEmpty(ViewBag.URL))
+            {
+                <meta property="og:url" content="@ViewBag.URL" />
+            }
+        }
+        @*<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">*@
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+
+        <link href="~/Content/site.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        @*
+                  @Styles.Render("~/cssbundles/css")
+            "~/Content/bootstrap.css",
+        "~/Content/site.css",
+        "~/Content/font-awesome.min.css"*@
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+
+
+        @RenderSection("AddToHead", required: false)
+
+    </head>
+    <body>
+
+
+        @Html.Partial("_HeaderPartial")
+
+        <main>
+            @if (TempData["messagetoshow"] != null)
+            {
+                <div class="row" id="messagetoshow"><p>@TempData["messagetoshow"]</p></div>
+            }
+            @RenderBody()
+        </main>
+        @if (ViewBag.NoFooter != null && ViewBag.NoFooter == true)
+        {
+
+        }
+        else
+        {
+            @Html.Partial("_FooterPartial")
+        }
+
+        <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+        @Scripts.Render("~/bundles/generaljs")
+        @*@Scripts.Render("~/bundles/bootstrap")*@
+        @*@Scripts.Render("~/bundles/modernizr")*@
+
+
+        @RenderSection("scripts", required: false)
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170823988-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-170823988-1');
+            gtag('config', 'AW-608539095');
+
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a08d24c7efd04f9f90555ac8d1c59be6" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="RentalModel.sysdiagram" PointX="8.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="RentalModel.Area" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="RentalModel.AreaRelation" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="RentalModel.Article" Width="1.5" PointX="6" PointY="24.875" />
+        <EntityTypeShape EntityType="RentalModel.ArticleRelation" Width="1.5" PointX="8.25" PointY="11.625" />
+        <EntityTypeShape EntityType="RentalModel.AspNetRole" Width="1.5" PointX="0.75" PointY="13.625" />
+        <EntityTypeShape EntityType="RentalModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="41.5" />
+        <EntityTypeShape EntityType="RentalModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="38.75" />
+        <EntityTypeShape EntityType="RentalModel.AspNetUserRole" Width="1.5" PointX="3" PointY="22.375" />
+        <EntityTypeShape EntityType="RentalModel.AspNetUser" Width="1.5" PointX="0.75" PointY="16.875" />
+        <EntityTypeShape EntityType="RentalModel.ContactU" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RentalModel.Customer" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RentalModel.CustomerBuy" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RentalModel.DirectMessage" Width="1.5" PointX="8" PointY="32.125" />
+        <EntityTypeShape EntityType="RentalModel.DiscountChange" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="RentalModel.Email" Width="1.5" PointX="8" PointY="17.375" />
+        <EntityTypeShape EntityType="RentalModel.EmailBlock" Width="1.5" PointX="5.25" PointY="19" />
+        <EntityTypeShape EntityType="RentalModel.EmailLayout" Width="1.5" PointX="5.75" PointY="28.125" />
+        <EntityTypeShape EntityType="RentalModel.EmailMarketingSend" Width="1.5" PointX="13.25" PointY="17.75" />
+        <EntityTypeShape EntityType="RentalModel.EmailSever" Width="1.5" PointX="8" PointY="28.125" />
+        <EntityTypeShape EntityType="RentalModel.EmailUnsubscribe" Width="1.5" PointX="3" PointY="19" />
+        <EntityTypeShape EntityType="RentalModel.Embassy" Width="1.5" PointX="6" PointY="3.75" />
+        <EntityTypeShape EntityType="RentalModel.Map" Width="1.5" PointX="1.5" PointY="26.75" />
+        <EntityTypeShape EntityType="RentalModel.Metro" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="RentalModel.PropertyGallery" Width="1.5" PointX="5.25" PointY="12.25" />
+        <EntityTypeShape EntityType="RentalModel.PropertyMetro" Width="1.5" PointX="5.25" PointY="9.375" />
+        <EntityTypeShape EntityType="RentalModel.PropertyType" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="RentalModel.SendInEmail" Width="1.5" PointX="10.25" PointY="18" />
+        <EntityTypeShape EntityType="RentalModel.Upload" Width="1.5" PointX="1.5" PointY="31" />
+        <EntityTypeShape EntityType="RentalModel.EmbassyProperty" Width="1.5" PointX="5.25" PointY="15.375" />
+        <AssociationConnector Association="RentalModel.FK_Area_Map" />
+        <AssociationConnector Association="RentalModel.FK_AreaRelation_Area" />
+        <AssociationConnector Association="RentalModel.FK_AreaRelation_Area1" />
+        <AssociationConnector Association="RentalModel.FK_ArticleRelation_Area" />
+        <AssociationConnector Association="RentalModel.FK_Embassy_Area" />
+        <AssociationConnector Association="RentalModel.FK_Metro_Area" />
+        <AssociationConnector Association="RentalModel.FK_ArticleProperty_Article" />
+        <AssociationConnector Association="RentalModel.FK_ArticleRelation_Embassy" />
+        <AssociationConnector Association="RentalModel.FK_ArticleRelation_PropertyType" />
+        <AssociationConnector Association="RentalModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="RentalModel.FK_AspNetUserClaims_AspNetUsers" />
+        <AssociationConnector Association="RentalModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="RentalModel.FK_AspNetUserLogins_AspNetUsers" />
+        <AssociationConnector Association="RentalModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="RentalModel.FK_AspNetUserRoles_AspNetUsers" />
+        <AssociationConnector Association="RentalModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="RentalModel.FK_Email_AspNetUsers" />
+        <AssociationConnector Association="RentalModel.FK_EmailUnsubscribe_AspNetUsers" />
+        <AssociationConnector Association="RentalModel.FK_SendInEmail_AspNetUsers" />
+        <AssociationConnector Association="RentalModel.FK_DirectMessage_EmailLayout" />
+        <AssociationConnector Association="RentalModel.FK_Email_EmailLayout" />
+        <AssociationConnector Association="RentalModel.FK_EmailMarketingSend_Email" />
+        <AssociationConnector Association="RentalModel.FK_SendInEmail_Email" />
+        <AssociationConnector Association="RentalModel.FK_EmailBlock_EmailUnsubscribe" />
+        <AssociationConnector Association="RentalModel.FK_EmailMarketingSend_EmailLayout" />
+        <AssociationConnector Association="RentalModel.FK_SendInEmail_EmailSever" />
+        <AssociationConnector Association="RentalModel.FK_Embassy_Map" />
+        <AssociationConnector Association="RentalModel.FK_EmbassyProperty_Embassy" />
+        <AssociationConnector Association="RentalModel.FK_Map_UploadImageBig" ManuallyRouted="true" >
+          <ConnectorPoint PointX="1.962890625" PointY="31" />
+          <ConnectorPoint PointX="1.962890625" PointY="30.268697916666671" />
+        </AssociationConnector>
+        <AssociationConnector Association="RentalModel.FK_Map_UploadSmallImage" />
+        <AssociationConnector Association="RentalModel.FK_Metro_Map" />
+        <AssociationConnector Association="RentalModel.FK_PropertyMetro_Metro" />
+        <AssociationConnector Association="RentalModel.FK_PropertyGallery_Upload" />
+        <EntityTypeShape EntityType="RentalModel.DisplayLanguage" Width="1.5" PointX="12.375" PointY="10.75" />
+        <EntityTypeShape EntityType="RentalModel.BlogType" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="RentalModel.Property" Width="1.5" PointX="15.75" PointY="14.875" />
+        <AssociationConnector Association="RentalModel.FK_Property_Area" />
+        <AssociationConnector Association="RentalModel.FK_ArticleRelation_Property" />
+        <AssociationConnector Association="RentalModel.FK_Property_AspNetUsers" />
+        <AssociationConnector Association="RentalModel.FK_Property_Map" />
+        <AssociationConnector Association="RentalModel.FK_EmbassyProperty_Property" />
+        <AssociationConnector Association="RentalModel.FK_Property_PropertyType" />
+        <AssociationConnector Association="RentalModel.FK_PropertyGallery_Property" />
+        <AssociationConnector Association="RentalModel.FK_PropertyMetro_Property" />
+        <EntityTypeShape EntityType="RentalModel.ComplexBlog" Width="1.5" PointX="18.875" PointY="12.125" />
+        <AssociationConnector Association="RentalModel.FK_ComplexBlog_Area" />
+        <AssociationConnector Association="RentalModel.FK_ComplexBlog_BlogType" />
+        <AssociationConnector Association="RentalModel.FK_ComplexBlog_Map" />
+        <EntityTypeShape EntityType="RentalModel.RequestApartment" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="RentalModel.Blog" Width="1.5" PointX="14.625" PointY="9.75" />
+        <AssociationConnector Association="RentalModel.FK_Blog_DisplayLanguage" />
+        <AssociationConnector Association="RentalModel.FK_ComplexBlog_Blog" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

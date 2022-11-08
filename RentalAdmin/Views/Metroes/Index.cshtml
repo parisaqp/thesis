@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RentalAdmin.Models.Metro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MetroName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Line)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Area.AreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Map.MapGoogleLink)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetroName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Line)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area.AreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Map.MapGoogleLink)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MetroID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MetroID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MetroID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,694 @@
+﻿@model RentalAdmin.Models.PageViewModel.SearchViewModel
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Search Property For Rent in Tehran";
+    ViewBag.CurretnMenu = "search";
+    var currenturl = Request.Url.PathAndQuery;
+    currenturl = RentalAdmin.helper.StringNumberConvertot.getUrlWihtoutPage(currenturl);
+    if(!currenturl.Contains("?"))
+    {
+        currenturl += "?";
+    }
+    ViewBag.SubTitle = " search property in Tehran to find the right one for you. try advanced search for a long-term lease. many furnished apartment and villa in Tehran.";
+
+    ViewBag.HasMetaValue = true;
+}
+@section AddToHead
+{
+    <link href="~/customecontent/searchpage.css" rel="stylesheet" />
+
+}
+@* ********************************************************************** *@
+
+<section id="banerSearch" class="container-fluid p-0">
+    <div class="row no-gutters">
+        <div class="col no-gutters ">
+            <img src="https://www.rentalir.com/img/search/banersearch.jpg" class="img-fluid mx-auto d-block" alt="" />
+        </div>
+    </div>
+</section>
+
+<section id="searchForm" class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-10  searchForm_box">
+            @*<h1>Search Properties in Tehran</h1>*@
+            <form class="pt-5 center" action="~/home/SearchPage" method="get">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <input type="text" id="AreaName" class="form-control textdecoration" placeholder="Neighborhood or Property Code" name="AreaName" list="json-datalist" autocomplete="on" value="@Model.AreaName">
+                        <datalist id="json-datalist"></datalist>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label ">Property Type:</label>
+                    <div class="col">
+                        <div class="row justify-content-around align-items-center">
+
+                            <div class="form-check custom_checkbox col-auto col-lg form-control  m-2
+                                 @(Model.PropertyTypeIDList != null && Model.PropertyTypeIDList.Any(a => a == 1) ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyTypeIDList" type="checkbox" class="form-check-input" value="1"
+                                           @(Model.PropertyTypeIDList != null && Model.PropertyTypeIDList.Any(a => a == 1) ? "checked='checked'" : "")>Apartment
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+
+                            <div class="form-check custom_checkbox col-auto col-lg form-control m-2
+                                           @(Model.PropertyTypeIDList != null && Model.PropertyTypeIDList.Any(a => a == 3) ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyTypeIDList" type="checkbox" class="form-check-input" value="3"
+                                           @(Model.PropertyTypeIDList != null && Model.PropertyTypeIDList.Any(a => a == 3) ? "checked='checked'" : "")>Office
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+
+                            <div class="form-check custom_checkbox col-auto col-lg form-control m-2
+                                           @(Model.PropertyTypeIDList != null && Model.PropertyTypeIDList.Any(a => a == 4) ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyTypeIDList" type="checkbox" class="form-check-input" value="4"
+                                           @(Model.PropertyTypeIDList != null && Model.PropertyTypeIDList.Any(a => a == 4) ? "checked='checked'" : "")>Villa
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+
+                            <div class="form-check custom_checkbox col-auto col-lg form-control m-2
+                                           @(Model.PropertyTypeIDList != null && Model.PropertyTypeIDList.Any(a => a == 6) ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyTypeIDList" type="checkbox" class="form-check-input" value="6"
+                                           @(Model.PropertyTypeIDList != null && Model.PropertyTypeIDList.Any(a => a == 6) ? "checked='checked'" : "")>Penthouse
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                @*<div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label rowlable">Furnished:</label>
+                    <div class="col">
+                        <div class="row justify-content-around align-items-center">
+                            <div class="form-check custom_checkbox col form-control m-2
+                                      @(Model.PropertyFurnisheType != null && Model.PropertyFurnisheType.Any(a => a == 2) ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyFurnisheType" type="checkbox" class="form-check-input" value="2"
+                                           @(Model.PropertyFurnisheType != null && Model.PropertyFurnisheType.Any(a => a == 2) ? "checked='checked'" : "")>Furnished
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+
+                            <div class="form-check custom_checkbox col form-control m-2
+                                      @(Model.PropertyFurnisheType != null && Model.PropertyFurnisheType.Any(a => a == 1) ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyFurnisheType" type="checkbox" class="form-check-input" value="1"
+                                           @(Model.PropertyFurnisheType != null && Model.PropertyFurnisheType.Any(a => a == 1) ? "checked='checked'" : "")>Semi Furnished
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+
+                            <div class="form-check custom_checkbox col form-control m-2
+                                      @(Model.PropertyFurnisheType != null && Model.PropertyFurnisheType.Any(a => a == 0) ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyFurnisheType" type="checkbox" class="form-check-input" value="0"
+                                           @(Model.PropertyFurnisheType != null && Model.PropertyFurnisheType.Any(a => a == 0) ? "checked='checked'" : "")>Unfurnished
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>*@
+
+
+                @*<div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label m-2">Age:</label>
+                        <div class="col">
+                            <div class="row justify-content-around align-items-center">
+                                <div class="form-check custom_checkbox col form-control m-2">
+                                    <label class="form-check-label">
+                                        <input name="PropertyAgeStr" type="checkbox" class="form-check-input" value="new">New
+                                    </label>
+                                </div>
+
+                                <div class="form-check custom_checkbox col form-control m-2">
+                                    <label class="form-check-label">
+                                        <input name="PropertyAgeStr" type="checkbox" class="form-check-input" value="middle">Middle
+                                    </label>
+                                </div>
+
+                                <div class="form-check custom_checkbox col form-control m-2">
+                                    <label class="form-check-label">
+                                        <input name="PropertyAgeStr"type="checkbox" class="form-check-input" value="old">Old
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>*@
+
+
+                <div class="form-group row">
+                    <div class="col-sm-12 col-md">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-auto"> <label for="inputPassword3" class=" col-form-label rowlable">Bedroom</label></div>
+
+                            <div class="col">
+                                <div class="row justify-content-center align-items-center">
+
+                                    <div class="col text-center">
+                                        <div class="inline_block m-1 p-0">
+
+                                            <div class="form-check pl-0">
+                                                <input name="PropertyBedroomList" class="form-check-input d-none" type="checkbox" id="gridCheck1" value="1"
+                                                       @(Model.PropertyBedroomList != null && Model.PropertyBedroomList.Any(a => a == 1) ? "checked='checked'" : "")>
+                                                <label class="form-check-label mycheckbox @(Model.PropertyBedroomList!=null&&Model.PropertyBedroomList.Any(a=>a==1)?"active":"")" for="gridCheck1">
+                                                    1
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="inline_block m-1 p-0">
+                                            <div class="form-check pl-0">
+                                                <input name="PropertyBedroomList" class="form-check-input d-none" type="checkbox" id="gridCheck1" value="2"
+                                                       @(Model.PropertyBedroomList != null && Model.PropertyBedroomList.Any(a => a == 2) ? "checked='checked'" : "")>
+                                                <label class="form-check-label mycheckbox @(Model.PropertyBedroomList!=null&&Model.PropertyBedroomList.Any(a=>a==2)?"active":"")" for="gridCheck1">
+                                                    2
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col text-center">
+
+                                        <div class="inline_block m-1 p-0">
+                                            <div class="form-check pl-0">
+                                                <input name="PropertyBedroomList" class="form-check-input d-none" type="checkbox" id="gridCheck1" value="3"
+                                                       @(Model.PropertyBedroomList != null && Model.PropertyBedroomList.Any(a => a == 3) ? "checked='checked'" : "")>
+                                                <label class="form-check-label mycheckbox @(Model.PropertyBedroomList!=null&&Model.PropertyBedroomList.Any(a=>a==3)?"active":"")" for="gridCheck1">
+                                                    3
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="inline_block m-1 p-0">
+                                            <div class="form-check pl-0">
+                                                <input name="PropertyBedroomList" class="form-check-input d-none" type="checkbox" id="gridCheck1" value="4"
+                                                       @(Model.PropertyBedroomList != null && Model.PropertyBedroomList.Any(a => a == 4) ? "checked='checked'" : "")>
+                                                <label class="form-check-label mycheckbox @(Model.PropertyBedroomList!=null&&Model.PropertyBedroomList.Any(a=>a==4)?"active":"")" for="gridCheck1">
+                                                    +4
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <div class="row justify-content-center align-items-center">
+
+                            <div class="col-auto">
+                                <label for="inputPassword3" class="col-sm-2 col-form-label">Price</label>
+
+                            </div>
+                            <div class="col">
+                                <div class="row justify-content-between align-items-center">
+                                    <input name="pricemin" class="col-auto rounded propertyTypeInputColPrice  form-control m-2 textdecoration" type="text" id="inputPassword3" placeholder="Min" value="@(Model.pricemin!=null&& Model.pricemin[0]!=null?Model.pricemin[0].Value:0)">
+                                    <input name="pricemax" class="col-auto rounded propertyTypeInputColPrice  form-control m-2 textdecoration" type="text" id="pricemax" placeholder="Max" value="@Model.pricemax">
+
+                                    @*<div class="form-check custom_checkbox col-md-6 form-control m-2">
+                                            <label class="form-check-label">
+                                                <input name="pricemax" type="text" class="form-check-input" value="" placeholder="Max">
+                                            </label>
+                                        </div>*@
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                @*<div class="form-group row">
+                        <div class="col">
+                            <div class="row justify-content-center align-items-center">
+                                <label for="inputPassword3" class="col-sm-2 col-form-label">Bathrooms</label>
+
+                                <div class="col-sm-10">
+                                    <div class="col">
+                                        <div class="row justify-content-center align-items-center ">
+                                            <div class="col-auto">
+                                                <div class="form-check pl-0">
+                                                    <input class="form-check-input d-none" type="checkbox" id="gridCheck1">
+                                                    <label class="form-check-label mycheckbox" for="gridCheck1">
+                                                        1
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="form-check pl-0">
+                                                    <input class="form-check-input d-none" type="checkbox" id="gridCheck1">
+                                                    <label class="form-check-label mycheckbox " for="gridCheck1">
+                                                        2
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="form-check pl-0">
+                                                    <input class="form-check-input d-none" type="checkbox" id="gridCheck1">
+                                                    <label class="form-check-label mycheckbox" for="gridCheck1">
+                                                        3
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="form-check pl-0">
+                                                    <input class="form-check-input d-none" type="checkbox" id="gridCheck1">
+                                                    <label class="form-check-label mycheckbox" for="gridCheck1">
+                                                        +4
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="row">
+
+                                <div class="col-auto">
+                                    <label for="inputPassword3" class="col-sm-2 col-form-label text-white">price max</label>
+
+                                </div>
+                                <div class="col">
+                                    <div class="row justify-content-between align-items-center">
+                                        <input  class="col-auto rounded propertyTypeInputColPrice  form-control mr-2" type="text" id="inputPassword3" placeholder="Max">
+                                        <div class="form-check custom_checkbox col-md-6 form-control m-2">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" value="">Unfurnished
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>*@
+
+
+                <div class="form-group row" id="Regionsrow">
+
+
+                    <label for="inputPassword3" class="col-sm-2 col-form-label ">Others</label>
+                    <div class="col-sm-10">
+
+                        <div class="row">
+
+                            <div class="form-check custom_checkbox col form-control m-2
+                                      @(Model.PropertyPool != null && Model.PropertyPool==true ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyPool" type="checkbox" class="form-check-input" value="true"
+                                           @(Model.PropertyPool != null && Model.PropertyPool == true ? "checked='checked'" : "")>Pool
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+
+                            @*<div class="form-check custom_checkbox col form-control m-2
+                  @(Model.PropertySauna != null && Model.PropertySauna==true ? "custom_checkbox_checked" : "")">
+            <label class="form-check-label">
+                <input name="PropertySauna" type="checkbox" class="form-check-input" value="true"
+                       @(Model.PropertySauna != null && Model.PropertySauna == true ? "checked='checked'" : "")>Sauna
+            </label>
+            <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+        </div>
+
+        <div class="form-check custom_checkbox col form-control m-2
+                  @(Model.PropertyHasGym != null && Model.PropertyHasGym==true ? "custom_checkbox_checked" : "")">
+            <label class="form-check-label">
+                <input name="PropertyHasGym" type="checkbox" class="form-check-input" value="true"
+                       @(Model.PropertyHasGym != null && Model.PropertyHasGym == true ? "checked='checked'" : "")>Gym
+            </label>
+            <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+        </div>*@
+
+
+                            <div class="form-check custom_checkbox col form-control m-2
+                                      @(Model.PropertyRoofGarden != null && Model.PropertyRoofGarden==true ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyRoofGarden" type="checkbox" class="form-check-input" value="true"
+                                           @(Model.PropertyRoofGarden != null && Model.PropertyRoofGarden == true ? "checked='checked'" : "")>RoofGarden
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+
+                            <div class="form-check custom_checkbox col form-control m-2
+                                      @(Model.PropertyHasLobby != null && Model.PropertyHasLobby==true ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyHasLobby" type="checkbox" class="form-check-input" value="true"
+                                           @(Model.PropertyHasLobby != null && Model.PropertyHasLobby == true ? "checked='checked'" : "")>Lobby
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+                            <div class="form-check custom_checkbox col form-control m-2
+                                      @(Model.PropertyIsShortTerm != null && Model.PropertyIsShortTerm==true ? "custom_checkbox_checked" : "")">
+                                <label class="form-check-label">
+                                    <input name="PropertyIsShortTerm" type="checkbox" class="form-check-input" value="true"
+                                           @(Model.PropertyIsShortTerm != null && Model.PropertyIsShortTerm == true ? "checked='checked'" : "")>Short-Term
+                                </label>
+                                <img src="https://www.rentalir.com/img/search/correct.png" class='inputcheckd'>
+                            </div>
+                            @*<div class="col-md-4">
+            <div class="form-check my-2  @(Model.PropertyPool != null && Model.PropertyPool==true ? "custom_checkbox_checked" : "")">
+                <input name="PropertyPool" class="form-check-input" type="checkbox" id="gridCheck1" value="true"
+                       @(Model.PropertyPool != null && Model.PropertyPool == true ? "checked='checked'" : "")>
+                <label class="form-check-label Regionslabel" for="gridCheck1">
+                    Pool
+                </label>
+                <img src="~/img/search/correct.png" class='region_checked'>
+            </div>
+
+        </div>*@
+                            @*<div class="col-md-4">
+            <div class="form-check my-2 @(Model.PropertySauna != null && Model.PropertySauna==true ? "custom_checkbox_checked" : "")">
+                <input name="PropertySauna" class="form-check-input" type="checkbox" id="gridCheck1" value="true"
+                       @(Model.PropertySauna != null && Model.PropertySauna == true ? "checked='checked'" : "")>
+                <label class="form-check-label Regionslabel" for="gridCheck1">
+                    Sauna
+                </label>
+                <img src="~/img/search/correct.png" class='region_checked'>
+            </div>
+        </div>*@
+                            @*<div class="col-md-4 @(Model.PropertyHasGym != null && Model.PropertyHasGym==true ? "custom_checkbox_checked" : "")">
+            <div class="form-check my-2">
+                <input name="PropertyHasGym" class="form-check-input" type="checkbox" id="gridCheck1" value="true"
+                       @(Model.PropertyHasGym != null && Model.PropertyHasGym == true ? "checked='checked'" : "")>
+                <label class="form-check-label Regionslabel" for="gridCheck1">
+                    Gym
+                </label>
+                <img src="~/img/search/correct.png" class='region_checked'>
+            </div>
+        </div>*@
+
+                            @*<div class="col-md-4 custom_checkbox @(Model.PropertyRoofGarden != null && Model.PropertyRoofGarden==true ? "custom_checkbox_checked" : "")">
+            <div class="form-check my-2">
+                <input name="PropertyRoofGarden " class="form-check-input d-none" type="checkbox" id="gridCheck1" value="true"
+                       @(Model.PropertyRoofGarden != null && Model.PropertyRoofGarden == true ? "checked='checked'" : "")>
+                <label class="form-check-label Regionslabel" for="gridCheck1">
+                    RoofGarden
+                </label>
+                <img src="~/img/search/correct.png" class='region_checked'>
+            </div>
+        </div>
+        <div class="col-md-4 custom_checkbox @(Model.PropertyHasLobby != null && Model.PropertyHasLobby==true ? "custom_checkbox_checked" : "")">
+            <div class="form-check my-2">
+                <input name="PropertyHasLobby" class="form-check-input d-none" type="checkbox" id="gridCheck1" value="true"
+                       @(Model.PropertyHasLobby != null && Model.PropertyHasLobby == true ? "checked='checked'" : "")>
+                <label class="form-check-label Regionslabel" for="gridCheck1">
+                    Lobby
+                </label>
+                <img src="~/img/search/correct.png" class='region_checked'>
+            </div>
+        </div>*@
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="form-group row" id="Regionsrow">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Regions</label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Farmaniye
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Parkway
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Tajrish
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Kamraniye
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Enghelab
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Farmaniye
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Parkway
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Tajrish
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Kamraniye
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Enghelab
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Farmaniye
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Parkway
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Tajrish
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Kamraniye
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label Regionslabel" for="gridCheck1">
+                                            Enghelab
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>*@
+
+                <div class="form-group row">
+                    <div class="col-sm-12 text-center">
+                        <button type="submit" class="btn btn-lg btn-search">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section id="searchFilter" class="container my-5">
+    @*<div class="row searchFilterRow  justify-content-center align-items-center p-3">
+            <div class="col">
+                <span class="badge badge-secondary p-2">Apartment</span>
+                <span class="badge badge-secondary p-2">3 Bedrooms</span>
+                <span class="badge badge-secondary p-2">1 Bethrooms</span>
+                <span class="badge badge-secondary p-2">Furnished</span>
+                <span class="badge badge-secondary p-2">$1000 - $2000</span>
+            </div>
+            <div class="col-auto ml-auto">
+                <div class="changeSearch">Change Search</div>
+                <div>
+                    <svg class="Line_21" viewBox="0 0 150 1">
+                        <path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Line_21" d="M 150 0 L 0 0">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </div>*@
+</section>
+
+<section id="homeBox" >
+    <div class="container-lg">
+        <div class="row my-3 ">
+            @if (Model != null && Model.properties != null && Model.properties.Count() > 0)
+            {
+                foreach (var item in Model.properties)
+                {
+                    <div class="col-md-6 col-lg-4 col-xl-3 ">
+                        @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No property found. Please try again.</p>
+            }
+
+
+        </div>
+        @if (Model != null && Model.properties != null && Model.properties.Count() > 0)
+        {
+            <nav aria-label="Page navigation example" class="my-3 row">
+                <div class="col-md"><hr class="other_property_hr"></div>
+                @Html.PagedListPager(Model.properties as PagedList.IPagedList<RentalAdmin.Models.Property>, page => currenturl + "&page=" + page, RentalAdmin.Models.StaticList.pagedlist)
+                <div class="col-md"><hr class="other_property_hr"></div>
+            </nav>
+        }
+    </div>
+   
+   
+</section>
+
+
+@* ********************************************************************** *@
+
+@section scripts
+{
+    <script src="~/customejs/autocomplete.js"></script>
+    <script>
+        $(function () {
+            function updatecheckbox(theObject) {
+                theObject.toggleClass("custom_checkbox_checked");//.find("img.inputcheckd").toggle();
+                var check_checkbox = theObject.find("input:checkbox").prop("checked")
+                theObject.find("input:checkbox").prop("checked", !check_checkbox);
+            }
+            //jQuery("div.custom_checkbox").append("<img src=\"/img/search/correct.png\" class='inputcheckd'>");//to add image to checkbox when get checked
+            //jQuery("#Regionsrow label.Regionslabel").parent().prepend("<img src=\"/img/search/correct.png\" class='region_checked'>");//to add image to checkbox when get checked
+
+            //******************************
+            jQuery("div.custom_checkbox ").click(function () {
+
+                updatecheckbox(jQuery(this));
+                //jQuery(this).toggleClass("custom_checkbox_checked").find("img.inputcheckd").toggle();
+                //var check_checkbox= jQuery(this).find("input:checkbox").prop("checked")
+                //jQuery(this).find("input:checkbox").prop("checked", !check_checkbox);
+            });
+            jQuery("div.form-check label.form-check-label").click(function (event) {
+                //updatecheckbox(jQuery(this));
+                event.preventDefault();
+            });
+
+            jQuery("label.mycheckbox").click(function () {
+
+                jQuery(this).toggleClass("active");
+                var check_checkbox = jQuery(this).parent("div").find("input:checkbox").prop("checked")
+                jQuery(this).parent("div").find("input:checkbox").prop("checked", !check_checkbox);
+            });
+
+            //for bellow checkbox when clicked
+            //jQuery("#Regionsrow label.Regionslabel").click(function (event) {
+
+            //    updatecheckbox(jQuery(this));
+            //    //event.preventDefault();
+            //    //var check_checkbox = jQuery(this).prev().prop("checked")
+            //    //jQuery(this).prev().prop("checked", !check_checkbox);
+
+            //    //jQuery(this).prev().toggle();
+            //    //jQuery(this).parent().find("img").toggleClass("region_checked");
+
+            //});
+
+
+
+        });//end jquery
+
+
+
+
+
+    </script>
+}
+
+

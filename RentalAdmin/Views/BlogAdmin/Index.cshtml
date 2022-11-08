@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RentalAdmin.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogSlug)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.InsertDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayLanguage.DisplayLanguageName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogSlug)
+        </td>
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.InsertDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayLanguage.DisplayLanguageName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.BlogID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BlogID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BlogID })
+        </td>
+    </tr>
+}
+
+</table>

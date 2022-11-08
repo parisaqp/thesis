@@ -1,0 +1,20 @@
+﻿@model RentalAdmin.Models.UploadImageModel
+
+@if (Model.UploadOb == null)
+{
+    <div class="form-group">
+        <span>@Model.obname</span>  <div class="col-md-10">
+            <input type="file" name="@Model.htmlName" id="@Model.htmlId" />
+        </div>
+    </div>
+}
+else
+{
+    <input hidden name="@Model.idNameHidden" id="@Model.idNameHidden" value="@Model.UploadOb.UploadID" />
+    <div class="form-group" style="height:100px;">
+        <span>@Model.obname</span>  <div class="col-md-10">
+        <img src="@(Model.UploadOb.BasicAddressVirtual+Model.UploadOb.UploadAddressOffSet)" style="max-height:100px;" id="@Model.UploadOb.UploadID"/>
+            <input type="file" name="@Model.htmlName" id="@Model.htmlId" />
+        </div>
+    </div>
+}

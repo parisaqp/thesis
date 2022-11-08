@@ -1,0 +1,107 @@
+﻿
+ul {
+    padding: 0
+}
+
+#contact-us-baner {
+    background-image: url('../../img/contactus/contactusbaner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.background-filter {
+    background-color: rgba(0, 0, 0, 0.59);
+}
+
+.contact-us-baner_title {
+    text-align: left;
+    font-style: normal;
+    font-weight: bold;
+    font-size: x-large;
+    color: rgba(255,255,255,1);
+}
+
+.contact-us-baner_sub_title {
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: large;
+    color: rgba(255,255,255,1);
+}
+
+#contact-us-baner svg.Path_1274 {
+    width: 49.361px;
+    height: 65.815px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+.contact-us-baner-leftBox_address {
+    text-align: left;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: medium;
+    color: rgba(255,255,255,1);
+}
+
+.contact-us-baner-leftBox_phones {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: medium;
+    color: rgba(255,255,255,1);
+}
+
+svg.Facebook__x28_alt_x29_ {
+    width: 29.841px;
+    height: 29.841px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+.contact-us-baner-leftBox_social-icons-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: medium;
+    color: rgba(255,255,255,1);
+}
+
+svg.Path_1265 {
+    width: 36.728px;
+    height: 29.841px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+svg.telegram {
+    width: 29.841px;
+    height: 29.841px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+.instabox {
+    background-color: #C1C1C1;
+    min-height: 62px;
+}
+
+.instatext {
+    width: 164px;
+    min-height: 62px;
+    background-color: #6E009C;
+}
+
+.contact-us-content-moto {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: medium;
+    color: rgba(112,112,112,1);
+}
+
+.contact-us-content-sub-moto {
+    font-style: normal;
+    font-weight: bold;
+    color: rgba(110,0,156,1);
+    font-size: medium;
+}
+

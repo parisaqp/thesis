@@ -1,0 +1,34 @@
+﻿
+ul {
+    padding: 0
+}
+
+#embassesBaner {
+    min-height: 300px;
+    background-image: url('../../img/embassies/Group 284.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: #600088;
+}
+
+    #embassesBaner > div.row {
+        min-height: 300px;
+    }
+
+.embassesBanerTitle {
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    /*font-size: 98px;*/
+    color: rgba(255,255,255,1);
+}
+
+.embassesIntro-details {
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 0 1px 0 rgba(0,0,0,.08);
+    text-align: justify;
+}
+

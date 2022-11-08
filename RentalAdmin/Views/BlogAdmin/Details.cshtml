@@ -1,0 +1,83 @@
+﻿@model RentalAdmin.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Blog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogSlug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogSlug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogBody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogBody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogImageAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogImageAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogSubTilte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogSubTilte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogImageAddressSmall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogImageAddressSmall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsertDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsertDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayLanguage.DisplayLanguageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayLanguage.DisplayLanguageName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BlogID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

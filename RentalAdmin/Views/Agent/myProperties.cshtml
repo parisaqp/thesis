@@ -1,0 +1,94 @@
+﻿@model IEnumerable<RentalAdmin.Models.Property>
+
+@{
+    ViewBag.Title = "ملک های من";
+    Layout = "~/Views/Shared/_OldLayout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("ارسال ملک جدید", "SendProperty")
+</p>
+<table class="table mytable table-dark">
+    <tr class="fiestrowtable">
+        <th scope="col" class="tdmaxwidth">
+            @Html.DisplayNameFor(model => model.PropertyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PropertyPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsExpired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsertDatetime)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PropertySpace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PropertyRoom)
+        </th>
+
+        <th>
+           عکس
+        </th>
+        <th>
+           محله
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyPrice)
+            </td>
+            <td>
+                @if(item.IsExpired==true)
+                {
+                <span> تایید نشده</span>
+                <a href="" >درخواست برای تایید</a>
+                }
+                else
+                {
+                    <span>تایید شده</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InsertDatetime)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertySpace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyRoom)
+            </td>
+           
+       
+
+            <td>
+                <img src="@item.PropertyImageAddress" width="50" height="50" />  
+            </td>
+           
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Area.AreaName)
+            </td>
+           
+            <td>
+                @Html.ActionLink("ویرایش", "EditProperty", new { id = item.PropertyID }) |
+              <a href="@item.getURl()" target="_blank">مشاهده</a> 
+            </td>
+        </tr>
+    }
+
+</table>

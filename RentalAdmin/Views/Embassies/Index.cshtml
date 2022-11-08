@@ -1,0 +1,105 @@
+﻿@model PagedList.IPagedList<RentalAdmin.Models.Embassy>
+@using PagedList.Mvc;
+@{
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @{
+            RentalAdmin.Models.Embassy temp = new RentalAdmin.Models.Embassy() { };
+            <th>
+                @Html.DisplayNameFor(model => temp.EmbassyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => temp.EmbassyOrginalName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => temp.EmbassyAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => temp.AreaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => temp.EmbassyWebsite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => temp.EmbassyBirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => temp.EmbassyEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => temp.EbmbassyPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => temp.EmbassySlug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => temp.Map.MapID)
+            </th>
+            <th></th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmbassyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmbassyOrginalName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmbassyAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmbassyWebsite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmbassyBirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmbassyEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EbmbassyPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmbassySlug)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Map.MapID)
+            </td>
+            <td>
+                @Html.ActionLink("manage map", "create", "maps", new { forienid = item.EmbassyID, source = "embassy", redirect = @Request.Url.AbsoluteUri }, null) |
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmbassyID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EmbassyID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EmbassyID })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page}))
+

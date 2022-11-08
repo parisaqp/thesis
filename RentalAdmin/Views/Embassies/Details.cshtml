@@ -1,0 +1,115 @@
+﻿@model RentalAdmin.Models.Embassy
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Embassy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmbassyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmbassyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmbassyOrginalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmbassyOrginalName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmbassyAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmbassyAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmbassyWebsite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmbassyWebsite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmbassyBirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmbassyBirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmbassyEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmbassyEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EbmbassyPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EbmbassyPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmbassySlug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmbassySlug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageSmall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageSmall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageBig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageBig)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area.AreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area.AreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Map.MapGoogleLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Map.MapGoogleLink)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmbassyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

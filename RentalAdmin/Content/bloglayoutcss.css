@@ -1,0 +1,47 @@
+﻿.layout-container {
+    display: grid;
+    grid-template-columns: auto 25%;
+    /*grid-template-columns: auto 300px;*/
+    grid-column-gap: 30px;
+}
+
+.layout-container {
+    display: flex;
+}
+
+main {
+    flex: 3;
+    /*height: 1500vh;*/
+    overflow-y: auto;
+    width: 75%;
+    float: left;
+    padding-left: 0.7rem;
+}
+
+.layout-container {
+    width: 100%;
+}
+
+
+aside {
+    flex: 1;
+    width: 25%;
+    float: left;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
+    height: 50vh;
+}
+
+
+    aside div {
+        margin-top: 10px;
+    }
+
+    aside article {
+        margin: 5px 0px;
+    }
+
+.layout-container:after {
+    clear: both;
+}

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<RentalAdmin.Models.Upload>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+   
+        <th>
+            @Html.DisplayNameFor(model => model.UploadName)
+        </th>
+ 
+        <th>
+            آدرس وب
+        </th>
+        <th>
+           آدرس فایل
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadWidth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadHeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadSize)
+        </th>
+       <th>نمایش عکس</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadName)
+        </td>
+      
+        <td>
+           <a href="@(item.BasicAddressVirtual + item.UploadAddressOffSet)">@(item.BasicAddressVirtual + item.UploadAddressOffSet)</a>
+ 
+        </td>
+        <td>
+            @(item.BasicAddressPhysical+item.UploadAddressOffSet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadAddressOffSet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadWidth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadHeight)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadSize)
+        </td>
+        <td>
+            @Html.Partial("_ShowImage",new RentalAdmin.Models.ShowImageModel()
+       {imageWidth="100",obUpload=item })
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UploadID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UploadID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UploadID })
+        </td>
+    </tr>
+}
+
+</table>

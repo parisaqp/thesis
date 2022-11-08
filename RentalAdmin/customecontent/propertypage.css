@@ -1,0 +1,482 @@
+﻿@media only screen and (max-width: 500px) {
+    .carousel-item .carouselimg {
+        max-height: 220px;
+        min-height: 180px;
+        width: auto;
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 800px) and (min-width:500px) {
+    .carousel-item .carouselimg {
+        max-height: 330px;
+        min-height: 220px;
+        width: auto;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 1200px) and (min-width:800px) {
+    .carousel-item .carouselimg {
+        max-height: 500px;
+        min-height: 400px;
+        width: auto;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 1800px) and (min-width:1200px) {
+    .carousel-item .carouselimg {
+        max-height: 640px;
+        min-height: 50px;
+        width: auto;
+        margin: auto;
+    }
+}
+
+ul {
+    padding: 0
+}
+
+
+header #Group_11 {
+    color: white;
+}
+
+header svg.address_i > path {
+    fill: white;
+}
+/*************************************************/
+.propertyInfo_title {
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(112,112,112,1);
+}
+
+.propertyInfo_title_comment {
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(112,112,112,1);
+}
+
+.Rectangle_48 {
+
+   
+    background-color: #F1F1F1;
+    display: inline-block;
+}
+
+.Rectangle_48_title {
+    font-weight: normal;
+    font-size: 1rem;
+    color: rgba(112,112,112,1);
+}
+
+.under_map_title {
+    font-weight: bold;
+    font-size: 2rem;
+    color: rgba(110,0,156,1);
+}
+
+.under_map_comment {
+    font-weight: normal;
+    font-size: 1rem;
+    color: rgba(112,112,112,1);
+}
+
+.under_map_tel {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: rgba(112,112,112,1);
+}
+
+.under_map_list {
+    line-height: 2.3;
+}
+
+.under_map_list_item {
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: rgba(112,112,112,1);
+}
+
+
+.See_All_Same_Property {
+    font-weight: normal;
+    font-size: 1rem;
+    color: rgba(112,112,112,1);
+}
+
+.other_property_title {
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgba(112,112,112,1);
+}
+
+hr.other_property_hr {
+    background-color: #B8B8B8;
+    height: 1px;
+}
+
+svg.Polygon_7 {
+    width: 11px;
+    height: 9px;
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+div.item-box div.item-box-image {
+    position: relative;
+}
+
+    /*div.item-box div.item-box-image div.item-box-image-tags {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background-color: rgba(110,0,156,0.9);
+        color: wheat;
+        padding: 10px;
+    }*/
+
+/*div.item-box .item-box-content .item-box-content-title {
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+
+div.item-box .item-box-content .item-box-content-price {
+    font-weight: bold;
+    font-size: 36px;
+    color: rgba(110,0,156,1);
+}*/
+
+div.myowlcarsoulwraper {
+    position: relative
+}
+
+    div.myowlcarsoulwraper img:hover {
+        cursor: pointer;
+    }
+
+    /*div.myowlcarsoulwraper div.owl-stage-outer {
+    }*/
+
+.owl-carousel .owl-nav.disabled {
+    display: block !important;
+}
+
+div.owl-carousel button.owl-prev {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    z-index: 2;
+}
+
+div.owl-carousel button.owl-next {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    z-index: 2;
+    font-size: 48px;
+}
+
+    div.owl-carousel button.owl-next > span, div.owl-carousel button.owl-prev > span {
+        position: relative;
+        z-index: 40;
+        font-size: 50px;
+        color: white;
+    }
+
+    div.owl-carousel button.owl-next:hover, div.owl-carousel button.owl-prev:hover {
+        cursor: pointer;
+    }
+
+div.myowlcarsoulwraper div.owl-thumbs {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    /*background-color: #090908c2;*/
+    z-index: 1
+}
+
+
+
+
+/*div.item-box, div.item-box div.item-box-image, div.item-box div.item-box-image div.text-center, div.item-box div.item-box-image div.text-center > img {
+    border-radius: 1rem !important;
+}
+
+    div.item-box div.item-box-image {
+        position: relative;
+        background-color: rgba(110,0,156,1);
+    }
+
+        div.item-box div.item-box-image div.text-center:hover {
+            transition: .4s;
+            opacity: .5;
+            cursor: pointer;
+        }
+
+        div.item-box div.item-box-image div.text-center div.item-box-image-tags:nth-child(2) {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: rgba(110,0,156,0.9);
+            color: wheat;
+            padding: 10px;
+            transition: .4s;
+        }
+
+        div.item-box div.item-box-image div.text-center:hover div.item-box-image-tags:nth-child(2) {
+            left: calc(50% - 70px);
+            top: 50px;
+        }
+
+        div.item-box div.item-box-image div.text-center div.item-box-image-tags:nth-child(3) {
+            display: none;
+            transition: .4s;
+            position: absolute;
+            background-color: rgba(110,0,156,0.9);
+            color: wheat;
+            padding: 10px;
+            left: calc(50% - 70px);
+            top: 100px;
+        }
+
+        div.item-box div.item-box-image div.text-center:hover div.item-box-image-tags:nth-child(3) {
+            display: block;
+        }
+
+        div.item-box div.item-box-image div.text-center div.item-box-image-tags:nth-child(4) {
+            display: none;
+            transition: .4s;
+            position: absolute;
+            background-color: rgba(110,0,156,0.9);
+            color: wheat;
+            padding: 10px;
+            left: calc(50% - 70px);
+            top: 150px;
+        }
+
+        div.item-box div.item-box-image div.text-center:hover div.item-box-image-tags:nth-child(4) {
+            display: block;
+        }
+
+    div.item-box div.item-box-content {
+        transition: .4s;
+    }
+
+
+    div.item-box .item-box-content .item-box-content-title {
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(112,112,112,1);
+        transition: .4s;
+        width: auto;
+    }
+
+    div.item-box:hover div.item-box-content .item-box-content-title {
+        width: 100%;
+        text-align: center
+    }
+
+    div.item-box .item-box-content .item-box-content-price {
+        font-weight: bold;
+        font-size: 36px;
+        color: rgba(110,0,156,1);
+        transition: .4s;
+        width: auto;
+    }
+
+    div.item-box:hover .item-box-content .item-box-content-price {
+        width: 100%;
+        text-align: center
+    }*/
+
+/*div.myowlcarsoulwraper {
+    position: relative
+}
+
+div.myowlcarsoulwraper img:hover {
+    cursor: pointer;
+}
+
+div.myowlcarsoulwraper div.owl-stage-outer {
+}
+
+.owl-carousel .owl-nav.disabled {
+    display: block !important;
+}
+
+div.owl-carousel button.owl-prev {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    z-index: 2;
+}
+
+div.owl-carousel button.owl-next {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    z-index: 2;
+    font-size: 48px;
+}
+
+    div.owl-carousel button.owl-next > span, div.owl-carousel button.owl-prev > span {
+        position: relative;
+        z-index: 40;
+        font-size: 50px;
+        color: white;
+    }
+
+    div.owl-carousel button.owl-next:hover, div.owl-carousel button.owl-prev:hover {
+        cursor: pointer;
+    }
+
+div.myowlcarsoulwraper div.owl-thumbs {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(152,152,152,0.5);
+    z-index: 1;
+}*/
+
+.carouselimg {
+    max-height: 530px;
+    /*height:500px;*/
+    min-height:529px;
+    width: auto;
+    margin: auto;
+}
+.background-light-transparent {
+    background-color: rgba(152,152,152,0.5);
+}
+
+.propertydetails{
+    padding-top:20px;
+    margin:10px;
+}
+
+svg.share {
+    width: 40.723px;
+    height: 37.14px;
+}
+
+    svg.share #share {
+        fill: rgba(110,0,156,1);
+    }
+
+.ID1850__Per_month {
+    width: 255px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: rgba(110,0,156,1);
+}
+
+/*.propertyprice {
+    font-size: xx-large;
+}*/
+
+.Do_you_need_more_information {
+    font-weight: normal;
+    font-size: large;
+    color: rgba(112,112,112,1);
+}
+
+.bg-gray {
+    background-color: rgba(236,236,236,1);
+}
+
+.Send_with_E-mail {
+    white-space: nowrap;
+    text-align: left;
+    border-style:hidden;
+    font-weight: normal;
+    font-size: 16px;
+    color: rgba(112,112,112,1);
+    outline:hidden;
+}
+.icon-send-message
+{
+    width:32px;
+}
+
+.propertyInfo_Header_title {
+    /*white-space: nowrap;*/
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: rgba(112,112,112,1);
+}
+
+.ID2_Bedrooms {
+    text-align: center;
+
+    font-size: small;
+    color: rgba(112,112,112,1);
+
+    display: inline-block;
+    max-width: 80%;
+    height: auto;
+    /*overflow: hidden;
+    text-overflow: ellipsis;*/
+    white-space: nowrap;
+}
+
+.propertyBox {
+    border: 1px solid rgba(112,112,112,1);
+    border-radius: 8px;
+    max-width: 99px;
+    min-width: 99px;
+    max-height: 110px;
+    min-height: 110px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.countableitem img{
+    padding:10px;
+}
+
+.icon-property
+{
+    max-width:40px;
+}
+.Nearbyhead {
+    border-bottom: 1px solid black;
+}
+.numberstrong{
+    font-weight:bold;
+    font-size:medium;
+}
+
+.horizontal-line-parent {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.256);
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+.horizontal-line-child {
+    background: #fff;
+    padding: 0 10px;
+}

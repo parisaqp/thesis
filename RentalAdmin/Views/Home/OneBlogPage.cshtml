@@ -1,0 +1,70 @@
+﻿@model RentalAdmin.Models.PageViewModel.BlogViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutBlog.cshtml";
+    ViewBag.Title = Model.theBlog.BlogTitle;
+    ViewBag.NavBar = "dark";
+
+    ViewBag.canonicalLink = Model.theBlog.getURl();
+
+    ViewBag.HasMetaValue = true;
+    ViewBag.ImageURL = Model.theBlog.BlogImageAddress;
+    ViewBag.Title = Model.theBlog.BlogTitle;
+    ViewBag.SubTitle = Model.theBlog.BlogSubTilte;
+    ViewBag.URL = Model.theBlog.getURl();
+    ViewBag.ShowMobilePhone = false;
+    //if(!Model.theBlog.IsBlogNormal)
+    //{
+    //    ViewBag.HideAside = true;
+    //}
+    ViewBag.RelatedBlogs= Model.RelatedBlogs;
+}
+@section AddToHead
+{
+
+    <link href="~/customecontent/blogpage.css" rel="stylesheet" />
+}
+@* **************************************************** *@
+
+    <section id="oneblog" class="container my-5">
+        <div class="row">
+            <div class="col-md-12 @(Model.LanguageDisplay+"-container")">
+                @if (!string.IsNullOrEmpty(Model.theBlog.BlogImageAddress))
+                {
+                    <div class="text-center">
+                        <img src="@Model.theBlog.BlogImageAddress" class="rounded img-fluid blogheaderimage" loading="lazy" alt="@Model.theBlog.BlogTitle">
+                    </div>
+                }
+                <h1 class="oneblog-title">@Model.theBlog.BlogTitle</h1>
+                <p class="oneblog-paraghrap">
+                    @Model.theBlog.BlogSubTilte
+                </p>
+                @Html.Raw(Model.theBlog.BlogBody)
+            </div>
+
+
+        </div>
+        @if (Model.regions != null && Model.regions.Count > 0)
+        {
+            <div class="col-md-12 overflow-auto p-5" id="containercompareneighborhoods">
+                <h3>Compare Best neighborhoods in Tehran to find your best place in Tehran</h3>
+                <p>
+                    The comprehensive and summarised table of neighborhoods and Factors.
+                </p>
+                @Html.Partial("~/Views/Shared/RegionsCompare.cshtml", Model.regions)
+
+            </div>
+        }
+
+    </section>
+
+
+@* **************************************************** *@
+@section scripts
+{
+    <script>
+
+    </script>
+}
+
+

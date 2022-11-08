@@ -1,0 +1,120 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<RentalAdmin.Models.CustomerBuy>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+    var amodel = new RentalAdmin.Models.CustomerBuy();
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => amodel.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.CustomerEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.CustomerPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.FirstCallDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.AboutCustomer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.CustomerCountryFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.CustomerProcess)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.CustomerBudget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.CustomerNextTimeToAction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.CustomerHasBuyed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.PropertyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.BuyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.BuyPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => amodel.WhatAmountIsForUs)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstCallDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AboutCustomer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerCountryFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerProcess)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerBudget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerNextTimeToAction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerHasBuyed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PropertyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuyPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhatAmountIsForUs)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerBuyID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CustomerBuyID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerBuyID })
+        </td>
+    </tr>
+    }
+
+</table>
+
+<nav aria-label="Page navigation example">
+    @Html.PagedListPager(Model as PagedList.IPagedList<RentalAdmin.Models.CustomerBuy>, page => Url.Action("index", "customerbuys", new { page = page }), RentalAdmin.Models.StaticList.BootstrapPagedlist)
+
+</nav>

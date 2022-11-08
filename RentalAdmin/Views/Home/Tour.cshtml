@@ -1,0 +1,96 @@
+﻿@model IEnumerable<RentalAdmin.Models.ComplexBlog >
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+    ViewBag.Title = "Iran tour packages 2022";
+    ViewBag.CurretnMenu = "tour";
+    var currenturl = Request.Url.PathAndQuery;
+    currenturl = RentalAdmin.helper.StringNumberConvertot.getUrlWihtoutPage(currenturl);
+    if (!currenturl.Contains("?"))
+    {
+        currenturl += "?";
+    }
+    ViewBag.SubTitle = "Visiting Iran for Torism? Look at our tours packages.";
+
+    ViewBag.HasMetaValue = true;
+    ViewBag.ImageURL = "https://www.rentalir.com//40aabc2d-9f69-479c-aab7-a91d2abe073f/80ba6890-a24a-477a-b54c-6d6dd71.jpg";
+}
+@section AddToHead
+{
+    <link href="~/customecontent/searchpage.css" rel="stylesheet" />
+    <style>
+        .tourleader {
+            margin: 10px 5px;
+            border-radius: 7px;
+            border-left: solid #610388 1px;
+        }
+    </style>
+}
+<section id="searchForm" class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-10  searchForm_box">
+            <br />
+            <h1>@ViewBag.Title</h1>
+            <h3>@ViewBag.SubTitle</h3>
+            <p>
+                In addition to the legendary hospitality of the Iranian people, a thousand-year-old culture and traditions await those who are brave enough to look beyond the clichés and the advertisements.
+            </p>
+            <p>
+                There is a wide range of trips available from RentalIR to famous Iranian attractions including Isfahan, known for its beautiful historic architecture and magnificent Persian gardens; Pasargadae and Persepolis, two ancient cities of the Achaemenid Empire that rank among the world's greatest antiquities; and Yazd, famous for its Zoroastrian fire temples, Persian handicrafts and its tasty confections.
+            </p>
+        </div>
+    </div>
+</section>
+<section id="TOPBLOGS" class="container mb-5">
+    @*<div class="row tobblog_header p-4 justify-content-center align-items-center">
+           <div class="col-md-auto"><h3 id="TOP_BLOGS">TOP BLOGS</h3></div>
+        </div>*@
+    <div class="tobblog_context">
+        <div class=" row">
+            @foreach (var item in Model)
+            {
+                <div class=" col-xl-3 col-lg-4 col-md-6 col-xs-12">
+                    @Html.Partial("~/Views/Shared/_BlogSquare.cshtml",item.Blog)
+                </div>
+            }
+
+        </div>
+    </div>
+    <hr />
+    <div>
+        <h2 style="text-align:center;">Tour Leaders</h2>
+        <hr />
+        <div class="tourleader row">
+            <div class="col-xl-8 col-lg-7 col-md-6 col-xs-12">
+                <h3>Malihe </h3>
+                <p>
+                    I am Malihe, a girl who loves travel and travelers around the world through
+                    adventures and get new experiences with knowing about different people, learning cultures and watch everything from a different viewpoint.
+                    I have traveled to many cities of Iran and I have read alot of books about History of Iran so I can help you with knowing Iran better :)
+                </p>
+            </div>
+            <div class="col-xl-4 col-lg-5 col-md-6 col-xs-12">
+                <img src="~/img/tourleader/malihe.jpg" alt="Malihe" style="width:90%;border-radius:35px;" />
+            </div>
+        </div>
+        <div class="tourleader row">
+            <div class="col-xl-8 col-lg-7 col-md-6 col-xs-12">
+                <h3>Amir</h3>
+            </div>
+            <div class="col-xl-4 col-lg-5 col-md-6 col-xs-12">
+                <img src="~/img/tourleader/soltani.jpg" alt="Amir Soltani" style="width:90%;border-radius:35px;" />
+            </div>
+        </div>
+        <br />
+
+    </div>
+    @*@if (Model != null && Model.Count() > 0)
+    {
+        <nav aria-label="Page navigation example" class="my-3 row">
+            <div class="col-md"><hr class="other_property_hr"></div>
+            @Html.PagedListPager(Model as PagedList.IPagedList<RentalAdmin.Models.ComplexBlog>, page => currenturl + "&page=" + page, RentalAdmin.Models.StaticList.pagedlist)
+            <div class="col-md"><hr class="other_property_hr"></div>
+        </nav>
+    }*@
+</section>
+

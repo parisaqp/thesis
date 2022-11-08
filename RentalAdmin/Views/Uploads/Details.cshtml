@@ -1,0 +1,125 @@
+﻿@model RentalAdmin.Models.Upload
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Upload</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadContentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadContentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasicAddressPhysical)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasicAddressPhysical)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasicAddressVirtual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasicAddressVirtual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadAddressOffSet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadAddressOffSet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadWidth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadWidth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadHeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadHeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadSize)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadSourceIsOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadSourceIsOut)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UploadID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

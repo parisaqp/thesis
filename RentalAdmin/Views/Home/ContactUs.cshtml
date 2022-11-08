@@ -1,0 +1,181 @@
+﻿@using RentalAdmin.helper.GoogleRecaptcha
+@{
+    ViewBag.Title = "Contact us";
+    ViewBag.NoFooter = true;
+    ViewBag.CurretnMenu = "contact";
+
+    ViewBag.HasMetaValue = true;
+    ViewBag.SubTitle = "contact retalir to rent home in Iran." + " Phone:" + RentalAdmin.Models.StaticList.PhoneNumberGoodShape
+        + " Address:"
+        + " 4th floor,No 50,8th alley," + " Khaje abdollah ansari street, Tehran, Iran";
+    ViewBag.URL = "https://www.rentalir.com/home/ContactUs";
+}
+@section AddToHead
+{
+    <!-- Event snippet for Website traffic conversion page -->
+    <!-- Event snippet for Website traffic conversion page -->
+    <script>gtag('event', 'conversion', { 'send_to': 'AW-608539095/EQbfCPCKwNkBENejlqIC' });</script>
+
+    <link href="~/customecontent/contactuspage.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld8z1IaAAAAAF7TGQNnpZDIwetZba4K2ZFqJ0P9"></script>
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6Ld8z1IaAAAAAF7TGQNnpZDIwetZba4K2ZFqJ0P9', { action: 'contactus' }).then(function (token) {
+                document.getElementById("g-recaptcha-response").value = token;
+            });
+        });
+    </script>
+}
+@* **************************************************** *@
+
+<section id="contact-us-baner" class="contaner-fluid bg-dark">
+    <div class="row justify-content-center align-items-center background-filter ">
+        <div class="col-md-10 text-left p-5">
+            <div class="row">
+                <div class="col-12"><h1 class="contact-us-baner_title">Contact us</h1></div>
+                @*<div class="col-12"><h3 class="contact-us-baner_sub_title">We would like to help</h3></div>*@
+            </div>
+            <div class="row">
+                <div class="col-md-7 contact-us-baner-leftBox">
+                    @*<p class="text-left">
+                            <svg class="Path_1274" viewBox="64 0 49.361 65.815">
+                                <path fill="rgba(255,255,255,1)" id="Path_1274" d="M 88.68067169189453 0 C 75.06928253173828 0 63.99999237060547 11.0692777633667 63.99999237060547 24.6806640625 C 63.99999237060547 41.78847885131836 86.27843475341797 64.26434326171875 87.22449493408203 65.21454620361328 C 87.62761688232422 65.61354827880859 88.15413665771484 65.81510162353516 88.68067169189453 65.81510162353516 C 89.20719146728516 65.81510162353516 89.73369598388672 65.61354827880859 90.13681793212891 65.21454620361328 C 91.08293914794922 64.26434326171875 113.3613357543945 41.78847885131836 113.3613357543945 24.6806640625 C 113.3613357543945 11.0692777633667 102.2920608520508 0 88.68067169189453 0 Z M 88.68067169189453 37.02099609375 C 81.87700653076172 37.02099609375 76.34033966064453 31.48430061340332 76.34033966064453 24.6806640625 C 76.34033966064453 17.87702560424805 81.87700653076172 12.34033203125 88.68067169189453 12.34033203125 C 95.48430633544922 12.34033203125 101.0210037231445 17.87702560424805 101.0210037231445 24.6806640625 C 101.0210037231445 31.48430061340332 95.48430633544922 37.02099609375 88.68067169189453 37.02099609375 Z">
+                                </path>
+                            </svg>
+                        </p>*@
+                    <p class="contact-us-baner-leftBox_address">
+                        <span>Address:</span>
+                        <br />
+                        4th floor, No 50, 8th alley,
+                        Khaje abdollah ansari street, Tehran, Iran
+                    </p>
+                    @*<p class="text-left">
+                            <img src="~/img/contactus/telephone.png" class="img-fluid" alt="phone number" />
+                        </p>*@
+                    <p class="contact-us-baner-leftBox_address">
+                        <span>Email:</span>
+                        <br />
+                        <span class="contact-us-baner-leftBox_phones mr-3">@RentalAdmin.Models.StaticList.EmailToShow</span>
+                        @*<span class="contact-us-baner-leftBox_phones mr-3">+98 21 2245 3651</span><span class="contact-us-baner-leftBox_phones">+98 21 2245 3651</span>*@
+                    </p>
+                    <p class="contact-us-baner-leftBox_address">
+                        <span>Phone:</span>
+                        <br />
+                        <span class="contact-us-baner-leftBox_phones mr-3">+@RentalAdmin.Models.StaticList.PhoneNumberGoodShape</span>
+                    </p>
+                    <p class="contact-us-baner-leftBox_address">
+                        <span>Working Hours:</span>
+                        <br />
+                        Saturday till Thursday: 9:00 AM to 7:00 PM
+                        <br />
+                        Fridays & Holidays: 9:00 AM to 5:00 PM
+                    </p>
+                    @*<p class="text-left">
+                            <span>
+                                <svg class="Facebook__x28_alt_x29_" viewBox="0 0 29.841 29.841">
+                                    <path fill="rgba(255,255,255,1)" id="Facebook__x28_alt_x29_" d="M 29.84077453613281 4.973862171173096 C 29.84077453613281 2.360437154769897 27.48136138916016 -5.630037094306317e-07 24.86731147766113 -5.630037094306317e-07 L 4.973461627960205 -5.630037094306317e-07 C 2.359410524368286 -5.630037094306317e-07 0 2.360437154769897 0 4.973862171173096 L 0 24.86732292175293 C 0 27.48074913024902 2.359410524368286 29.84118461608887 4.973793506622314 29.84118461608887 L 14.92038726806641 29.84118461608887 L 14.92038726806641 18.56784820556641 L 11.27318000793457 18.56784820556641 L 11.27318000793457 13.59431552886963 L 14.92038726806641 13.59431552886963 L 14.92038726806641 11.65662860870361 C 14.92038726806641 8.31474781036377 17.42966270446777 5.305099010467529 20.51552963256836 5.305099010467529 L 24.53574371337891 5.305099010467529 L 24.53574371337891 10.27862930297852 L 20.51552963256836 10.27862930297852 C 20.0755443572998 10.27862930297852 19.56228446960449 10.81278610229492 19.56228446960449 11.6128625869751 L 19.56228446960449 13.59431552886963 L 24.53574371337891 13.59431552886963 L 24.53574371337891 18.56784820556641 L 19.56228446960449 18.56784820556641 L 19.56228446960449 29.84118461608887 L 24.86731147766113 29.84118461608887 C 27.48136138916016 29.84118461608887 29.84077453613281 27.48074913024902 29.84077453613281 24.86732292175293 L 29.84077453613281 4.973862171173096 Z">
+                                    </path>
+                                </svg>
+                                <span class="contact-us-baner-leftBox_social-icons-text">Real Estate tehran</span>
+                            </span>
+                            <span class="ml-5">
+                                <svg class="Path_1265" viewBox="0 48 36.727 29.841">
+                                    <path fill="rgba(255,255,255,1)" id="Path_1265" d="M 36.72707748413086 51.53273010253906 C 35.36128997802734 52.13185119628906 33.90597915649414 52.52896881103516 32.38869094848633 52.72179412841797 C 33.94959259033203 51.78982543945313 35.14092636108398 50.3253173828125 35.70101928710938 48.56009674072266 C 34.24570465087891 49.42778778076172 32.63890075683594 50.04067230224609 30.92649841308594 50.38269805908203 C 29.54464149475098 48.91129302978516 27.57514572143555 47.99999237060547 25.42660903930664 47.99999237060547 C 21.25808906555176 47.99999237060547 17.90214920043945 51.38352966308594 17.90214920043945 55.53145599365234 C 17.90214920043945 56.12827301025391 17.95265007019043 56.70213317871094 18.07660293579102 57.24845886230469 C 11.81692790985107 56.94317626953125 6.278018474578857 53.9429931640625 2.557104110717773 49.37269592285156 C 1.907494068145752 50.49977874755859 1.526450276374817 51.78982543945313 1.526450276374817 53.17858123779297 C 1.526450276374817 55.78624725341797 2.869284391403198 58.09780120849609 4.870911121368408 59.43605804443359 C 3.661212682723999 59.41310119628906 2.474468231201172 59.0618896484375 1.469063997268677 58.50868988037109 C 1.469063997268677 58.53163909912109 1.469063997268677 58.56147766113281 1.469063997268677 58.59131622314453 C 1.469063997268677 62.25031280517578 4.078983306884766 65.28952789306641 7.501489162445068 65.9896240234375 C 6.88860559463501 66.15719604492188 6.220632076263428 66.237548828125 5.527407646179199 66.237548828125 C 5.045365333557129 66.237548828125 4.558731079101563 66.21000671386719 4.101936817169189 66.10900115966797 C 5.077500820159912 69.0908203125 7.84580659866333 71.28298950195313 11.13747501373291 71.35416412353516 C 8.575757026672363 73.35811614990234 5.323113441467285 74.56553649902344 1.801902294158936 74.56553649902344 C 1.184428095817566 74.56553649902344 0.5922034978866577 74.53798675537109 -2.09808367799269e-05 74.46223449707031 C 3.335260152816772 76.61310577392578 7.288015365600586 77.84117889404297 11.55065631866455 77.84117889404297 C 25.40595245361328 77.84117889404297 32.98091888427734 66.36379241943359 32.98091888427734 56.41521453857422 C 32.98091888427734 56.08236694335938 32.96944046020508 55.76100921630859 32.95337295532227 55.44193267822266 C 34.44770431518555 54.38142395019531 35.70331573486328 53.05693054199219 36.72707748413086 51.53273010253906 Z">
+                                    </path>
+                                </svg>
+                                <span class="contact-us-baner-leftBox_social-icons-text">Real Estate</span>
+                            </span>
+                        </p>
+                        <p class="text-left">
+                            <span>
+                                <img src="~/img/contactus/002-google-plus-logo.png" class="img-fluid" alt="" />
+
+                                <span class="contact-us-baner-leftBox_social-icons-text">Real Estate thrn</span>
+                            </span>
+                            <span class="ml-5">
+                                <svg class="telegram" viewBox="0 0 29.841 29.841">
+                                    <path fill="rgba(255,255,255,1)" id="telegram" d="M 14.92038726806641 29.84118461608887 C 23.16265487670898 29.84118461608887 29.84077453613281 23.16297721862793 29.84077453613281 14.92059230804443 C 29.84077453613281 6.67820930480957 23.16265487670898 0 14.92038726806641 0 C 6.678116321563721 0 0 6.678208827972412 0 14.92059230804443 C 0 23.16297721862793 6.678115844726563 29.84118461608887 14.92038726806641 29.84118461608887 Z M 6.827319622039795 14.59731197357178 L 21.21306037902832 9.050581932067871 C 21.88074684143066 8.809367179870605 22.4638843536377 9.21346378326416 22.2475414276123 10.2230920791626 L 22.248779296875 10.22184944152832 L 19.79935455322266 21.76168251037598 C 19.61782073974609 22.57983016967773 19.13166809082031 22.77877235412598 18.45154571533203 22.39331817626953 L 14.72144985198975 19.64419937133789 L 12.92229843139648 21.37747573852539 C 12.72336196899414 21.57641792297363 12.55550575256348 21.7442741394043 12.17006492614746 21.7442741394043 L 12.43490028381348 17.9482250213623 L 19.34801292419434 11.70271492004395 C 19.64890670776367 11.43787288665771 19.28087425231934 11.28866863250732 18.88423728942871 11.55226612091064 L 10.34107494354248 16.93113708496094 L 6.658225536346436 15.78225421905518 C 5.858741283416748 15.52860260009766 5.841334819793701 14.98275852203369 6.827323913574219 14.59731197357178 Z">
+                                    </path>
+                                </svg>
+                                <span class="contact-us-baner-leftBox_social-icons-text">Real Estate</span>
+                            </span>
+                        </p>*@
+                </div>
+                <div class="col-md-5 contact-us-baner-rightBox">
+                    <div class="">
+                        <div class="card">
+                            <h5 class="card-title text-center mt-3" id="Contact_Us">Contact Us</h5>
+
+                            <form action="~/home/Contactus" method="post" id="contactusform">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+                                <input hidden value="@Request.Url.PathAndQuery" name="returnurl" />
+                                <div class="card-body">
+                                    <div class="form-group">
+
+                                        <input type="text" class="form-control" id="" placeholder="name" name="name">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="email" class="form-control" id="" placeholder="Email" name="emailFrom">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="messagestr" placeholder="Your Message ..." rows="3"></textarea>
+                                    </div>
+                                    @Html.ReCaptchaValidationMessage()
+
+                                    <div class="form-group text-center">
+                                        <button type="submit" id="Send" class="btn  btn-small ">Send</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@*<section id="contact-us-content" class="container my-5">
+        <div class="row ">
+            <div class="col">
+                <div class="row  ml-2">
+                    <div class="col-auto instabox p-3">
+                        <img src="~/img/contactus/insta-icon.png" class="img-fluid" alt="" />
+                    </div>
+                    <div class="col-auto instatext p-3 text-white">
+                        <span>Instagram</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-md-7">
+                <img src="~/img/contactus/p1.png" class="img-fluid m-1" alt="" />
+                <img src="~/img/contactus/p2.png" class="img-fluid m-1" alt="" />
+                <img src="~/img/contactus/p3.png" class="img-fluid m-1" alt="" />
+                <img src="~/img/contactus/p4.png" class="img-fluid m-1" alt="" />
+                <img src="~/img/contactus/p5.png" class="img-fluid m-1" alt="" />
+                <img src="~/img/contactus/p6.png" class="img-fluid m-1" alt="" />
+            </div>
+            <div class="col-md-5">
+                <p class="contact-us-content-moto">
+                    You Can Follow us in
+                    social media and
+                </p>
+                <p class="contact-us-content-sub-moto">Stay Tuned!</p>
+            </div>
+        </div>
+    </section>*@
+
+@* **************************************************** *@
+
+
+

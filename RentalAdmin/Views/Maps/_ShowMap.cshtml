@@ -1,0 +1,38 @@
+﻿@model RentalAdmin.Models.Map
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.MapWidth)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.MapWidth)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.MapZoom)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.MapZoom)
+    </dd>
+
+   
+
+
+    <dt>
+        @Html.DisplayNameFor(model => model.UploadBig.UploadName)
+    </dt>
+
+    <dd>
+        @Html.Partial("_ShowImage", Model.UploadBig)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.UploadSmall.UploadName)
+    </dt>
+
+    <dd>
+        @Html.Partial("_ShowImage", Model.UploadSmall)
+    </dd>
+
+</dl>

@@ -1,0 +1,351 @@
+﻿@model RentalAdmin.Models.PageViewModel.RegionViewModel
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = Model.region.getName();
+    ViewBag.CurretnMenu = "region";
+    ViewBag.NavBar = "dark";
+    ViewBag.canonicalLink = Model.region.getURl();
+
+    ViewBag.HasMetaValue = true;
+    ViewBag.ImageURL = Model.region.ImageBig;
+    ViewBag.SubTitle = Model.region.getAboutMeta();
+    ViewBag.URL = Model.region.getURl();
+}
+@section AddToHead
+{
+    <link href="~/customecontent/regionpage.css" rel="stylesheet" />
+    @if (Model.properties != null && Model.properties.Count() > 2)
+    {
+        int i = 1;
+        <script type="application/ld+json">
+            {
+            "@@context": "https://schema.org",
+            "@@type": "ItemList",
+            "name":"@ViewBag.Title",
+            "itemListElement": [
+
+            @foreach (var item in Model.properties)
+            {
+                string gtin8 = item.PropertyOurCode.ToString("D" + 8);
+                if (i != 1)
+                {
+                    <text>,</text>
+                }
+                <text>
+                    {
+                    "@@type": "ListItem",
+                    "position": "@i",
+                </text>
+
+                <text>
+                    "item":{
+                    "@@context": "http://schema.org",
+                    "@@type":"Product",
+                    "name": "@item.getName()",
+                    "image": "@item.PropertyImageAddress",
+                    "description": "@item.getDescription()",
+                    "sku":@item.PropertyOurCode,
+                    "brand": {
+                    "@@type": "Brand",
+                    "name": "@item.Area.AreaName"
+                    },
+                    "offers":
+                    {
+                    "@@type": "Offer",
+                    "price": "@item.PropertyPrice",
+                    "priceCurrency": "USD",
+                    "priceValidUntil": "@System.DateTime.Now.Year.ToString()-@((System.DateTime.Now.Month + 1).ToString())-1",
+                    "availability": "https://schema.org/InStock"
+                    },
+                    "url":"@item.getURl()",
+                    "gtin8":"@gtin8"
+
+
+
+                    }
+                    }
+                </text>
+                i = i + 1;
+            }
+            ]
+            }
+
+        </script>
+
+
+
+    }
+
+}
+@* **************************************************** *@
+
+<section id="region_page_baner_section1" class="container my-5 col-md-10">
+    @if (Model.region.Map != null && !string.IsNullOrEmpty(Model.region.Map.MapGoogleLink))
+    {
+        <div class="row">
+            <div class="col-md-7">
+                <div class="row justify-content-center align-items-center region_page_baner_section1_innerShadow">
+                    @*<img class=" w-100 imgback" src="@Model.region.ImageBig" alt="@Model.region.getName()">*@
+
+                    <div class="col">
+                        <h1 class="region_page_baner_section1_title my-2">Rent property in @Model.region.getName()</h1>
+                        <svg class="Line_20" viewBox="0 0 925 3">
+                            <path fill="transparent" stroke="rgba(3, 19, 1, 1)" stroke-width="3px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Line_20" d="M 0 0 L 925 0">
+                            </path>
+                        </svg>
+                        <div class="row region_page_baner_section1_infoBox justify-content-center align-items-center">
+                            @*<div class="col-auto text-center">
+            <ul class="region_page_baner_section1_infoBox_list p-3">
+                <li class="region_page_baner_section1_infoBox_icon"><i class="fa fa-usd" aria-hidden="true"></i></li>
+                <li class="region_page_baner_section1_infoBox_digit"><span>2,100</span></li>
+                <li class="region_page_baner_section1_infoBox_title"><span>Average Price</span></li>
+            </ul>
+        </div>*@
+                            <div class="col-auto text-center">
+                                <ul class="region_page_baner_section1_infoBox_list p-2">
+                                    <li class="region_page_baner_section1_infoBox_icon"><i class="fa fa-home" aria-hidden="true"></i></li>
+                                    <li class="region_page_baner_section1_infoBox_digit"><span>@(Model.propertiesCount > 12 ? Model.propertiesCount + Model.region.AreaID : Model.propertiesCount)</span></li>
+                                    <li class="region_page_baner_section1_infoBox_title"><span>Properties</span></li>
+                                </ul>
+                            </div>
+                            @if (Model.metroCount > 0)
+                            {
+                                <div class="col-auto text-center">
+                                    <ul class="region_page_baner_section1_infoBox_list p-2">
+                                        <li class="region_page_baner_section1_infoBox_icon"><i class="fa fa-train" aria-hidden="true"></i></li>
+                                        <li class="region_page_baner_section1_infoBox_digit"><span>@Model.metroCount</span></li>
+                                        <li class="region_page_baner_section1_infoBox_title"><span>@RentalAdmin.helper.StringNumberConvertot.GetPlural("Metro", Model.metroCount)</span></li>
+                                    </ul>
+                                </div>
+                            }
+                            @if (Model.embassyCount > 0)
+                            {
+                                <div class="col-auto text-center">
+                                    <ul class="region_page_baner_section1_infoBox_list p-2">
+                                        <li class="region_page_baner_section1_infoBox_icon"><i class="fa fa-university" aria-hidden="true"></i></li>
+                                        <li class="region_page_baner_section1_infoBox_digit"><span>@Model.embassyCount</span></li>
+                                        <li class="region_page_baner_section1_infoBox_title"><span>@RentalAdmin.helper.StringNumberConvertot.GetPlural("Embassy", Model.embassyCount)</span></li>
+                                    </ul>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.region.Climate)&& Model.region.Climate.Contains("clean"))
+                            {
+                                <div class="col-auto text-center">
+                                    <ul class="region_page_baner_section1_infoBox_list region_page_baner_section1_infoBox_list_green p-2">
+                                        <li class="region_page_baner_section1_infoBox_icon"><i class="fa fa-cloud" aria-hidden="true"></i></li>
+
+                                        <li class="region_page_baner_section1_infoBox_title"><span>@Model.region.Climate</span></li>
+                                        <li class="region_page_baner_section1_infoBox_title"><span>Weather</span></li>
+                                    </ul>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="my-2">
+                    <h3 class="region_page_context_title">Read About @Model.region.AreaName</h3>
+                    <p class="region_page_context_comment">
+                        @Model.region.GetAboutFromDatabase()
+                    </p>
+                    @if (!string.IsNullOrEmpty(Model.region.getAbout()))
+                    {
+                        @Html.Raw(Model.region.getAbout())
+                    }
+                 
+
+                </div>
+                <div class="row">
+                    @if (Model.regionWithRelated != null &&
+                     Model.regionWithRelated.AreaRelatedList != null && Model.regionWithRelated.AreaRelatedList.Count > 0)
+                    {
+                        <div class="col-md-6">
+                            <h5>Nearby neighborhoods</h5>
+                            <ul>
+
+                                @foreach (var item in Model.regionWithRelated.AreaRelatedList)
+                                {
+                                    <li><a href="@item.getURl()">@item.AreaName</a></li>
+                                }
+
+                            </ul>
+                        </div>
+
+
+                    }
+                    <div class="col-md-6">
+                        <h5>Related Blogs</h5>
+                        <ul>
+
+
+                            <li><a href="https://www.rentalir.com/blog/6/a-comprehensive-guide-where-to-live-in-tehran">A Comprehensive guide: where to live in Tehran</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                    </div>
+
+
+            <div class="col-md-5">
+                <div class="mb-3">
+                    <a href="@Model.region.Map.MapGoogleLink" target="_blank"> 
+                    <img  src="@Model.region.Map.UploadBig.GetPublicUrl()" class="img-fluid imagemap" loading="lazy" alt="map @Model.region.getTitle()" title="map @Model.region.getTitle()" /></a>
+                    @*@Model.region.Map.UploadBig.GetPublicUrl()*@
+                    <p class="text-center mt-0"><a href="@Model.region.Map.MapGoogleLink" target="_blank"><strong> see on your google map</strong></a></p>
+
+
+                </div>
+                <div>
+                    @if (Model.allEmbassy != null && Model.allEmbassy.Count > 0)
+                    {
+                        <h3 class="region_page_context_title">Embassies in @Model.region.AreaName</h3>
+                        <div class="region_page_context_flags">
+                            @foreach (var item in Model.allEmbassy)
+                            {
+                                <a href="@item.getURl()" target="_blank"> <img src="@item.ImageBig" class="img-fluid m-3" loading="lazy" alt="@item.EmbassyName" title="@item.EmbassyName" /></a>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    else
+
+    {
+        <div class="row justify-content-center align-items-center region_page_baner_section1_innerShadow p-4 ">
+            <img class="h-100 w-100 imgback" src="@Model.region.ImageBig" loading="lazy" alt="@Model.region.getName()">
+
+            <div class="col">
+                <h1 class="region_page_baner_section1_title">Rent property in @Model.region.getName()</h1>
+                <svg class="Line_20" viewBox="0 0 925 3">
+                    <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="3px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Line_20" d="M 0 0 L 925 0">
+                    </path>
+                </svg>
+                <div class="row region_page_baner_section1_infoBox text-white justify-content-center align-items-center">
+                    @*<div class="col-auto text-center">
+                            <ul class="region_page_baner_section1_infoBox_list p-3">
+                                <li class="region_page_baner_section1_infoBox_icon"><i class="fa fa-usd" aria-hidden="true"></i></li>
+                                <li class="region_page_baner_section1_infoBox_digit"><span>2,100</span></li>
+                                <li class="region_page_baner_section1_infoBox_title"><span>Average Price</span></li>
+                            </ul>
+                        </div>*@
+                    <div class="col-auto text-center">
+                        <ul class="region_page_baner_section1_infoBox_list p-2">
+                            <li class="region_page_baner_section1_infoBox_icon"><i class="fa fa-home" aria-hidden="true"></i></li>
+                            <li class="region_page_baner_section1_infoBox_digit"><span>@(Model.propertiesCount > 12 ? Model.propertiesCount + Model.region.AreaID : Model.propertiesCount)</span></li>
+                            <li class="region_page_baner_section1_infoBox_title"><span>Property</span></li>
+                        </ul>
+                    </div>
+                    @if (Model.metroCount > 0)
+                    {
+                        <div class="col-auto text-center">
+                            <ul class="region_page_baner_section1_infoBox_list p-2">
+                                <li class="region_page_baner_section1_infoBox_icon"><i class="fa fa-train" aria-hidden="true"></i></li>
+                                <li class="region_page_baner_section1_infoBox_digit"><span>@Model.metroCount</span></li>
+                                <li class="region_page_baner_section1_infoBox_title"><span>Metros</span></li>
+                            </ul>
+                        </div>
+                    }
+                    else if (Model.embassyCount > 0)
+                    {
+                        <div class="col-auto text-center">
+                            <ul class="region_page_baner_section1_infoBox_list p-2">
+                                <li class="region_page_baner_section1_infoBox_icon"><i class="fa fa-university" aria-hidden="true"></i></li>
+                                <li class="region_page_baner_section1_infoBox_digit"><span>@Model.embassyCount</span></li>
+                                <li class="region_page_baner_section1_infoBox_title"><span>Embassies</span></li>
+                            </ul>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    }
+</section>
+
+
+
+@*<section id="region_page_context" class="container my-5 col-md-10" >
+    <div class="row">
+
+        <div class="col-md-4">
+            <p> مراکز تفریحی</p>
+            <ul>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <p> ویژگی ها</p>
+            <ul>
+                <li>traffic</li>
+                <li>climate</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+
+        </div>
+        <div class="col-md-4">
+            <p>محله های مجاور</p>
+            <ul>
+                <li>traffic</li>
+                <li>climate</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+        
+        </div>
+    </div>
+
+
+
+</section>*@
+
+<br />
+<section id="homeBox" class="container-fluid  p-lg-4 p-xl-5 p-md-3 p-sm-1 ">
+    <div class="row tobblog_header p-4 justify-content-center align-items-center">
+        <div class="col-md-auto"><h5 class="other_property_title">Properties In @Model.region.AreaName</h5></div>
+        <div class="col-md"><hr class="other_property_hr" /></div>
+        <div class="col-md-auto" id="See_All_Blogs">
+            <span class="See_All_Same_Property"><a href="https://www.rentalir.com/home/SearchPage?AreaName=@Model.region.AreaName">Advanced Search</a></span><span class="ml-auto">
+                <svg class="Polygon_7" viewBox="0 0 11 9">
+                    <path fill="rgba(112,112,112,1)" id="Polygon_7" d="M 5.499999523162842 0 L 11 9 L 0 9 Z">
+                    </path>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <div class="row my-3">
+        @if (Model.properties != null && Model.properties.Count() > 0)
+        {
+            foreach (var item in Model.properties)
+            {
+                <div class="col-sm-10 col-md-6 col-lg-4 col-xl-3 ">
+                    @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                </div>
+            }
+        }
+    </div>
+
+    <nav aria-label="Page navigation example" class="my-3 row">
+        <div class="col-md"><hr class="other_property_hr"></div>
+        @Html.PagedListPager(Model.properties as PagedList.IPagedList<RentalAdmin.Models.Property>, page => Url.Action("RegionPage1", "home",
+      new { page}), RentalAdmin.Models.StaticList.pagedlist)
+        <div class="col-md"><hr class="other_property_hr"></div>
+    </nav>
+
+
+</section>
+
+@* **************************************************** *@
+@section scripts
+{
+
+}
+
+

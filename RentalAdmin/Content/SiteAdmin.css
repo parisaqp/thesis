@@ -1,0 +1,24 @@
+﻿/*****************************************for making bootstrap rtl********************************/
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: myFont;
+    font-size: 14px;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #f8ea49;
+}
+
+ul li {
+    list-style: none
+}
+/*******************************************End for making bootstrap rtl*************************/
+/*******************************************my styles*******************************************/
+
+
+
+
+
+

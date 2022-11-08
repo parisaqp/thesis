@@ -1,0 +1,80 @@
+﻿@model IEnumerable<RentalAdmin.Models.PropertyGallery>
+
+@{
+    ViewBag.Title = "gallery";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+    int newOrder = Model.Count();
+    int i = 0;
+}
+@section AddToHead
+{
+    <style>
+        hr {
+            display: block;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            margin-left: auto;
+            margin-right: auto;
+            border-style: inset;
+            border-width: 1px;
+            margin-top:20px;
+            margin-bottom:20px;
+        }
+    </style>
+    
+}
+
+<h2>gallery</h2>
+<form action="/uploads/gallery" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="@ViewBag.id" />
+    @Html.AntiForgeryToken()
+    @foreach (var item in Model)
+    {
+        <div style="height:150px;">
+            @Html.Partial("_UploadImage", new RentalAdmin.Models.UploadImageModel() {
+           htmlId = "replaceImage" + i.ToString(),
+           htmlName = "replaceImage[" + i.ToString() + "]",
+           idNameHidden = "uploadID[]",
+           obname= "عکس " + i.ToString(),
+            UploadOb=item.Upload
+       })
+        </div>
+        <div class="form-group">
+            <span>ترتیب نمیاش عکس</span>
+            <div class="col-md-10">
+                <input type="number" name="imageOrder[@i]" value="@item.PropertyGalleryOrder" max="200" min="0" />
+            </div>
+        </div>
+        <div class="form-group">
+            <span>حذف عکس</span>
+            <div class="col-md-10">
+                <input type="checkbox"
+                       value="@item.PropertyGalleryID"
+                       name="deleteimage" />
+            </div>
+        </div>
+        <hr />
+        i = i + 1;
+
+    }
+    @for (int j = 0; j < 10; j++)
+    {
+        newOrder = newOrder + 1;
+        <div class="form-group">
+            <span>image @(j + 1):</span>
+            <div class="col-md-10">
+                <input type="file" name="newImage[@j]" id="newimage@(i.ToString())" />
+            </div>
+        </div>
+        <div class="form-group">
+            <span>ترتیب نمیاش عکس</span>
+            <div class="col-md-10">
+                <input type="number" name="newImageOrder[@j]" value="@newOrder" max="200" min="0" />
+            </div>
+
+        </div>
+        <hr />
+    }
+    <input type="submit" name="submit" value="submit" />
+</form>
+

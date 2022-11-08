@@ -1,0 +1,198 @@
+﻿
+ul {
+    padding-left: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+.bg-purpul {
+    background-color: #6E009C !important;
+}
+
+#filter_section {
+    min-height: 500px;
+    background-image: url('https://www.rentalir.com/img/tower_background_optmized.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.background-filter {
+    min-height: 500px;
+    background-color: rgba(3, 19, 1, 0.49);
+}
+
+.filter_section_title {
+    filter: drop-shadow(0px 3px 9px rgba(0, 0, 0, 1));
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: rgba(255,255,255,1);
+}
+
+#ADVANCED_SEARCH {
+    filter: drop-shadow(0px 3px 9px rgba(0, 0, 0, 1));
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: rgba(255,255,255,1);
+}
+
+    #ADVANCED_SEARCH::after {
+        content: '';
+        display: inline-block;
+        width: 12%;
+        height: 1px;
+        background: #F2F4F6;
+        transition: width .3s;
+        position: relative;
+        top: -5px;
+        transition:.4s;
+    }
+    #ADVANCED_SEARCH:hover::after, #ADVANCED_SEARCH:hover::before{
+        width: 20%;
+    }
+
+
+    #ADVANCED_SEARCH::before {
+        content: '';
+        display: inline-block;
+        width: 12%;
+        height: 1px;
+        background: #F2F4F6;
+        transition: width .3s;
+        position: relative;
+        top: -5px;
+        transition:.4s;
+    }
+
+.see-all-line {
+    font-weight: normal;
+    font-size: 24px;
+    color: rgba(112,112,112,1);
+    position: relative;
+}
+
+    .see-all-line::after {
+        content: '';
+        display: inline-block;
+        width: 40px;
+        height: 2px;
+        background: rgb(112, 112, 112);
+        transition: width .3s;
+        position: relative;
+        top: -5px;
+        color: rgb(112, 112, 112);
+    }
+    .see-all-line:hover::after, .see-all-line:hover::before {
+        width: 150px;
+    }
+
+
+    .see-all-line::before {
+        content: '';
+        display: inline-block;
+        width: 40px;
+        height: 2px;
+        background: rgb(112, 112, 112);
+        transition: width .3s;
+        position: relative;
+        top: -5px;
+        color: rgb(112, 112, 112);
+    }
+
+#filter_section input, #filter_section select {
+    opacity: 0.85;
+    min-width:140px;
+}
+
+#tab_section {
+    background-color: #F2F2F2;
+}
+
+
+.nav-tabs .nav-item {
+    /*white-space: nowrap;
+    text-align: center;
+    font-weight: normal;*/
+    font-size: large;
+    /*color: rgba(112,112,112,1);*/
+    color:whitesmoke;
+    background-color: mediumpurple;
+    border-bottom-right-radius:12px;
+    padding:3px 8px;
+}
+
+.nav-tabs .active {
+    /*white-space: nowrap;
+    text-align: center;
+    font-weight: normal;*/
+    /*font-size: x-large;*/
+    color: rgba(96,0,136,1);
+    background-color: whitesmoke;
+    /*border-radius: 12px;*/
+    padding: 3px 8px;
+    border: solid 1px mediumpurple;
+    border-bottom-right-radius:12px;
+}
+
+
+
+
+
+section#baner div.banerrow-image {
+    background-image: url('https://www.rentalir.com/img/banerrow.jpg');
+    background-size: cover;
+    min-height: 200px;
+}
+
+section#baner {
+}
+
+    section#baner #France_National_Day_ {
+        font-weight: bold;
+        font-size: 1.7rem;
+        color: rgba(255,255,255,1);
+    }
+
+    section#baner #Ceremony_in_France_Embassy_in_ {
+        font-weight: lighter;
+        font-size: 1.7rem;
+        color: rgba(255,255,255,1);
+    }
+
+    section#baner #ID14_July_2020 {
+        font-weight: lighter;
+        font-size: 1.5rem;
+        color: rgba(255,255,255,1);
+    }
+
+    section#baner #See_More {
+        font-weight: normal;
+        font-size: 1.5rem;
+        color: rgba(255,255,255,1);
+        text-decoration: none;
+    }
+
+        section#baner #See_More button {
+            background-color: #572877;
+        }
+
+
+#See_More #See_All_Embassy_Pages {
+    /*font-weight: normal;
+    font-size: 24px;*/
+    color: white;
+}
+.autocomplete{
+   
+}
+.select-items {
+    background-color: whitesmoke;
+    border-radius: 5%;
+    border-image-outset: 3px;
+    border-color: azure;
+    border-style:solid;
+    border-color:gold;
+}
+

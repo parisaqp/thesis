@@ -1,0 +1,121 @@
+﻿@model RentalAdmin.Models.CustomerBuy
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CustomerBuy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstCallDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstCallDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AboutCustomer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerCountryFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerCountryFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerNation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerNation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerHasBuyed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerHasBuyed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WhatAmountIsForUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WhatAmountIsForUs)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

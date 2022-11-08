@@ -1,0 +1,22 @@
+﻿@model RentalAdmin.Models.Blog
+<div class="tobblog-box">
+    <div class="tobblog-box-image">
+        <div class="text-center">
+            <a href="@Model.getURl()" target="_blank">
+                <img class="img-fluid rounded" src="@Model.BlogImageAddressSmall" />
+            </a>
+            @*<div class="tobblog-box-image-tags">
+                    <i class="fa fa-bed" aria-hidden="true"></i>
+                    <span>2 BEDROOMS</span>
+                </div>*@
+        </div>
+    </div>
+    <div class="tobblog-content">
+        <h3 class="tobblog-content-title"><a href="@Model.getURl()" target="_blank">@Model.BlogTitle</a> </h3>
+        @if (Model.InsertDateTime != null)
+        {
+            var theDate = (System.DateTime)Model.InsertDateTime;
+            <p class="tobblog-content-date"><i class="fa fa-clock-o" aria-hidden="true"></i> @theDate.ToShortDateString()</p>
+        }
+    </div>
+</div>

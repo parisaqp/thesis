@@ -1,0 +1,88 @@
+﻿<header>
+   
+    <nav class="navbar navbar-expand-lg p5 @( ViewBag.NavBar!=null&& ViewBag.NavBar=="dark"?"navbar-dark":"navbar-light")  ">
+      
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+            <a class="navbar-brand ml-sm-5 col" href="https://www.rentalir.com">
+                <img class="float-right float-md-none logopng" src="@Url.Content(ViewBag.NavBar!=null&& ViewBag.NavBar=="dark"?"https://www.rentalir.com/img/logorentalwhitefullop.png":"https://www.rentalir.com/img/logorental.png")" id="logopng"  alt="logo rentalir" />
+              </a>
+      
+            
+            @*<div class="col-md-4 text-center">
+                <a class="navbar-brand" href="https://www.rentalir.com">
+                    <div id="Sample_Logo_i">
+                        <div id="Group_11">
+                            <svg class="address_i" viewBox="0 -0.001 60.163 60.016">
+                                <path fill="rgba(110,0,156,1)" id="address_i" d="M 24.0298957824707 53.88801193237305 L 24.0298957824707 59.98134613037109 L 22.55647659301758 58.7911376953125 C 22.32881164550781 58.60707855224609 16.91205406188965 54.20932006835938 11.41910266876221 47.90300750732422 C 3.841795682907104 39.20341873168945 -0.0001000077681965195 31.39434242248535 -0.0001000077681965195 24.69320869445801 L -0.0001000077681965195 24.02902221679688 C -0.0001000077681965195 10.77880954742432 10.77970504760742 -0.0009613035945221782 24.02988815307617 -0.0009613035945221782 C 37.28007507324219 -0.0009613035945221782 48.05987548828125 10.77884387969971 48.05987548828125 24.02902221679688 L 48.05987548828125 24.69320869445801 C 48.05987548828125 25.25595283508301 48.0300407409668 25.82741546630859 47.97587966918945 26.40576553344727 L 43.27655410766602 22.11862754821777 C 42.31401443481445 12.34726047515869 34.0500373840332 4.687781810760498 24.02988243103027 4.687781810760498 C 13.3652925491333 4.687781810760498 4.68862247467041 13.36440658569336 4.68862247467041 24.02904319763184 L 4.68862247467041 24.6932258605957 C 4.68862247467041 36.0169563293457 19.27864456176758 49.72518539428711 24.02988243103027 53.88796234130859 Z M 38.44777297973633 50.52026748657227 L 45.4807014465332 50.52026748657227 L 45.4807014465332 43.48734664916992 L 38.44777297973633 43.48734664916992 L 38.44777297973633 50.52026748657227 Z M 24.0298957824707 14.06542778015137 C 29.52376556396484 14.06542778015137 33.99358749389648 18.53524971008301 33.99358749389648 24.02911758422852 C 33.99358749389648 29.52298355102539 29.52376556396484 33.99280166625977 24.0298957824707 33.99280166625977 C 18.53603172302246 33.99280166625977 14.0662088394165 29.52298355102539 14.0662088394165 24.02911758422852 C 14.0662088394165 18.53524971008301 18.53603172302246 14.06542778015137 24.0298957824707 14.06542778015137 Z M 24.0298957824707 18.75418663024902 C 21.12116241455078 18.75418663024902 18.75498390197754 21.12037086486816 18.75498390197754 24.02910423278809 C 18.75498390197754 26.9373779296875 21.12116622924805 29.30401802062988 24.0298957824707 29.30401802062988 C 26.93817329406738 29.30401802062988 29.30481338500977 26.9373779296875 29.30481338500977 24.02910423278809 C 29.30481338500977 21.12036895751953 26.93817329406738 18.75418663024902 24.0298957824707 18.75418663024902 Z M 57.00315856933594 47.3343620300293 L 55.68487930297852 46.13175964355469 L 55.68487930297852 53.65903091430664 C 55.68487930297852 57.16400527954102 52.83306121826172 60.01537704467773 49.32807159423828 60.01537704467773 L 34.48329925537109 60.01537704467773 C 30.97831344604492 60.01537704467773 28.12648963928223 57.16402435302734 28.12648963928223 53.65903091430664 L 28.12648963928223 46.13175964355469 L 26.80821228027344 47.3343620300293 L 23.64840316772461 43.87068557739258 L 41.90544128417969 27.21466827392578 L 60.16293716430664 43.87068557739258 L 57.00315856933594 47.3343620300293 Z M 50.99612045288086 41.85427093505859 L 41.90546417236328 33.56136703491211 L 32.81526565551758 41.85427093505859 L 32.81526565551758 53.65856552124023 C 32.81526565551758 54.57842254638672 33.56344604492188 55.32660675048828 34.48330307006836 55.32660675048828 L 49.32807540893555 55.32660675048828 C 50.24792861938477 55.32660675048828 50.99610900878906 54.57842254638672 50.99610900878906 53.65856552124023 L 50.99612045288086 41.85427093505859 Z M 50.99612045288086 41.85427093505859">
+                                </path>
+                            </svg>
+                            <span>Sample Logo</span>
+                            <img src="@Url.Content(ViewBag.NavBar!=null&& ViewBag.NavBar=="dark"?"https://www.rentalir.com/img/logorentalwhite.png":"https://www.rentalir.com/img/logorental.png")" id="logopng" />
+
+                        </div>
+
+                    </div>
+                </a>
+            </div>*@
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav  text-left">
+                    <li class="nav-item @(ViewBag.CurretnMenu=="home"?"active":"")">
+                        <a class="nav-link nav-link-line" href="/">Home @*<span class="sr-only">(current)</span>*@</a>
+                    </li>
+                    <li class="nav-item @(ViewBag.CurretnMenu=="short-term"?"active":"")">
+                        <a class="nav-link nav-link-line" href="/home/rent-short-term-apartment-in-tehran">Short Term@*<span class="sr-only">(current)</span>*@</a>
+                    </li>
+                    <li class="nav-item @(ViewBag.CurretnMenu=="tour"?"active":"")">
+                        <a class="nav-link nav-link-line" href="/home/Tour-In-Iran">Tour</a>
+                    </li>
+                    <li class="nav-item @(ViewBag.CurretnMenu=="region"?"active":"")">
+                        <a class="nav-link nav-link-line" href="/home/best-neighborhoods-in-tehran">Neighborhoods</a>
+                    </li>
+                    <li class="nav-item @(ViewBag.CurretnMenu=="embassy"?"active":"")">
+                        <a class="nav-link nav-link-line" href="/home/list-embassies-tehran">Embassies</a>
+                    </li>
+                    <li class="nav-item @(ViewBag.CurretnMenu=="search"?"active":"")">
+                        <a class="nav-link nav-link-line" href="/home/searchpage">Search Property</a>
+                    </li>
+                    @*<li class="nav-item">
+            <a class="nav-link" href="#">BLOG</a>
+        </li>*@
+                    @*<li class="nav-item">
+            <a class="nav-link" href="/home/">ABOUT US</a>
+        </li>*@
+                    <li class="nav-item @(ViewBag.CurretnMenu=="contact"?"active":"")">
+                        <a class="nav-link nav-link-line" href="/home/ContactUs">Contact Us</a>
+                    </li>
+
+                    <li class="nav-item dropdown  @(ViewBag.CurretnMenu=="blog"?"active":"")">
+                        <a class="nav-link dropdown-toggle" href="/home/blogindex" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Blogs
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://www.rentalir.com/blog/6/a-comprehensive-guide-where-to-live-in-tehran">where to live in Tehran?</a>
+                            <a class="dropdown-item" href="https://www.rentalir.com/blog/7/tehrans-public-transportation">Tehran's Public Transportation</a>
+                            <a class="dropdown-item" href="/home/blogindex">All Blogs</a>
+                            @*<div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>*@
+                        </div>
+                    </li>
+
+                </ul>
+                <div id="staticContactIcon" class="col-auto d-none  d-md-block">
+                    <div class="row">
+                        <div class="col-auto staticContactIconTel  animate__animated   "><img src="~/img/header/tellicon.png" class="img-responsive" alt="rentalir phone number" /></div>
+                        <div class="col staticContactIconText pr-1  animate__animated ">
+                            <a href="https://wa.me/@(RentalAdmin.Models.StaticList.PhoneNumber)/?text=@("Hi")"  target="_blank">
+                                +@RentalAdmin.Models.StaticList.PhoneNumber</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+
+    </header>
+

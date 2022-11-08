@@ -1,0 +1,153 @@
+﻿@model  RentalAdmin.Models.admin.FindUserViewModel
+
+@{
+    ViewBag.Title = "جستجو کاربر";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+@section AddToHead{
+    <style>
+        .from-normal input {
+            border-style: groove;
+            border-color: gray;
+            border-width: medium;
+        }
+    </style>
+}
+@*<!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>FindUser</title>
+
+    </head>
+    <body>*@
+<main class="col-lg-11 col-md-11 col-sm-11 col-xs-11 col-centered dashboard">
+    <section class="col-md-12">
+        <div class="form-control-static from-normal p-3">
+            <form method="get" action="~/useradmin/finduser">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">شماره</label>
+                    <input name="phonenumber" type="text" class="form-control" id="username" value="@Model.username">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">نام کاربری</label>
+                    <input name="username" type="text" class="form-control" id="username" value="@Model.phonenumber">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">ایمیل</label>
+                    <input name="email" type="email" class="form-control" id="email" value="@Model.email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">نام</label>
+                    <input name="fname" type="text" class="form-control" id="fname" value="@Model.fname">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">نام خانوادگی</label>
+                    <input name="lname" type="text" class="form-control" id="lname" value="@Model.lname">
+                </div>
+                <button type="submit" class="btn btn-primary">جستجو</button>
+
+            </form>
+
+        </div>
+
+
+
+        <div class="overflow-x:auto;">
+            <table class="table table-dark ">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.users.First().Email)
+                        </th>
+
+                        <th scope="col" class="tdmaxwidth">
+                            @Html.DisplayNameFor(model => model.users.First().UserName)
+                        </th>
+
+                        <th scope="col" class="tdmaxwidth">
+                            @Html.DisplayNameFor(model => model.users.First().UserFName)
+                        </th>
+                        <th scope="col" class="tdmaxwidth">
+                            @Html.DisplayNameFor(model => model.users.First().UserLName)
+                        </th>
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.users.First().RegisterDate)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.users.First().PhoneNumber)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.users.First().UserIDIntroduced)
+                        </th>
+
+                        <th scope="col" class="tdminwidth"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model.users)
+                        {
+                    <tr>
+                        <th scope="row"> @Html.DisplayFor(modelItem => item.Email)</th>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+
+                        <td class="tdmaxwidth">
+                            @Html.DisplayFor(modelItem => item.UserFName)
+                        </td>
+                        <td class="tdmaxwidth">
+                            @Html.DisplayFor(modelItem => item.UserLName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RegisterDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserIDIntroduced)
+                        </td>
+                        <td class="tdminwidth">
+                            @Html.ActionLink("این کاربر را من آوردم", "IIntroduced", "useradmin", new { userID = item.Id }, null)
+
+                            <span>|</span>
+                            @Html.ActionLink("افزودن ملک", "Create", "properties", new { UserID = item.Id }, null)
+
+                            <span>|</span>
+                            @Html.ActionLink("تغییر پسورد", "resetPasswordAdmin", "useradmin", new { userID = item.Id }, null)
+                            @*@if (User.IsInRole("admin"))
+        {
+            <span>|</span>
+            @Html.ActionLink("تغییر ایمیل", "changeEmail", "admin", new { userID = item.Id }, null)
+        }
+
+        @if (User.IsInRole("FinancialModir") || User.IsInRole("AdminModir"))
+        {
+            <span>|</span>
+            @Html.ActionLink("مالی", "transactionsadmin", "AdminFinancial", new { id = 1, username = item.UserName }, null)
+
+            <span>|</span>
+            @Html.ActionLink("اطلاعات مالی", "UserFinancialInfoList", "AdminFinancial", new { userId = item.Id }, null)
+        }*@
+
+                        </td>
+                    </tr>
+                        }
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+    </section>
+
+</main>
+@*</body>
+    </html>*@

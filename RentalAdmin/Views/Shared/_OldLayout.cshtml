@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title | RentalIR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;700&display=swap" rel="stylesheet">
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="/Content/bootstrap-4.5.3-rtl/bootstrap.min.css" rel="stylesheet" />*@
+    @Styles.Render("~/cssbundles/cssagent")
+    @if (IsSectionDefined("AddToHead"))
+    {
+        @RenderSection("AddToHead", required: false)
+    }
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="~/img/favrental128.png" sizes="128x128" type="image/png">
+
+    <meta name="theme-color" content="#343A40">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="@Url.Action("dashboard","agent")">داشبرد</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            @Html.ActionLink("rentalir| اجاره در ایران", "Index", "agent", new { area = "" }, new { @class = "navbar-brand" })
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="/Home/index"  class = "nav-link">سایت اصلی</a></li>
+                <li class="nav-item"><a href="/agent/myProperties" class="nav-link">املاک</a></li>
+                <li class="nav-item"><a href="/agent/SendProperty" class="nav-link">ارسال ملک</a></li>
+                @*<li class="nav-item">@Html.ActionLink("پشتیبانی", "support", "agent", new { @class = "nav-link" })</li>*@
+            </ul>
+
+            @Html.Partial("_LoginPartial")
+            @*<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>*@
+            <a class="navbar-brand " href="https://www.rentalir.com">
+                <img class="float-right float-md-none image-limitheight img-thumbnail" src="~/img/logorental.png" id="logopng2" alt="logo rentalir">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            @*<ul>
+                    <li>@Html.ActionLink("سایت اصلی", "Index", "Home")</li>
+                    <li>@Html.ActionLink("قوانین", "Contact", "Home")</li>
+                </ul>*@
+            <p>&copy; @DateTime.Now.Year - rentalir</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*<script src="/Content/bootstrap-4.5.3-rtl/bootstrap.min.js"></script>*@
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

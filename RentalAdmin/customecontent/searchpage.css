@@ -1,0 +1,215 @@
+﻿
+ul {
+    padding-left: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+#banerSearch {
+    position: absolute;
+}
+
+#searchForm {
+}
+
+.searchForm_box {
+    margin-top: 4.5rem;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+    padding-bottom: 5px;
+    border-color: #B8B8B8;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 0 1px 0 rgba(0,0,0,.08);
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+}
+    .searchForm_box h1{
+        font-size:2.1rem;
+    }
+
+    .searchForm_box h3 {
+        font-size: 1.2rem;
+    }
+    
+
+    .searchForm_box input[type] {
+        border: 1px solid #B8B8B8;
+        box-shadow: 0 1px 0 rgba(0,0,0,.08);
+    }
+
+    .searchForm_box label {
+        font-weight: bold;
+        font-size: medium;
+        color: rgba(112,112,112,1);
+    }
+
+.propertyTypeInputColPrice {
+    max-width: 140px;
+}
+
+.btn-search {
+    width: 180px;
+    height: 50px;
+    background-color: rgb(110, 0, 156);
+    color: white;
+}
+
+.searchFilterRow {
+    background-color: #F5F5F5;
+}
+
+/*div.item-box div.item-box-image {
+    position: relative;
+}
+
+    div.item-box div.item-box-image div.item-box-image-tags {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background-color: rgba(110,0,156,0.9);
+        color: wheat;
+        padding: 10px;
+    }
+
+div.item-box .item-box-content .item-box-content-title {
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+
+div.item-box .item-box-content .item-box-content-price {
+    font-weight: bold;
+    font-size: 36px;
+    color: rgba(110,0,156,1);
+}*/
+
+.mycheckbox {
+    border: 1px solid rgba(112,112,112,1);
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 6px;
+    align-content: center;
+    cursor: pointer;
+    /*transition: .4s;*/
+}
+
+    .mycheckbox:hover {
+        background-color: #eee;
+    }
+
+    .mycheckbox.active {
+        background-color: #609;
+        color: white;
+    }
+
+
+
+/*div#Regionsrow div.form-check > img.region_checked {
+    display: inline;
+    opacity: 0;
+}
+
+div#Regionsrow div.form-check > img {
+    opacity: 1;
+}*/
+
+#searchFilter span.badge {
+    border-radius: 1rem;
+}
+
+.changeSearch {
+    font-size: 1.3rem;
+}
+
+div.custom_checkbox {
+    border: 1px solid #B8B8B8;
+    box-shadow: 0 1px 0 rgba(0,0,0,.08);
+    border-radius: .4rem;
+    min-height: 25px;
+    position: relative;
+   transition: .4s;
+    min-width:140px;
+ 
+}
+
+    .custom_checkbox_checked, div.custom_checkbox:hover {
+        background-color: #eee;
+        cursor: pointer;
+    }
+
+    div.custom_checkbox > label {
+        display: block;
+        cursor: pointer;
+        font-weight: normal;
+    }
+
+
+
+    /*div.custom_checkbox*/
+    .inputcheckd {
+        transition: .4s;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 22px;
+        height: 22px;
+        margin: 2px;
+        display: none;
+        /*transition: .4s;*/
+    }
+
+.region_checked {
+    display: none;
+    position: absolute;
+   
+    /*transition: .4s;*/
+}
+
+div.custom_checkbox_checked img.inputcheckd {
+    display: inline;
+}
+div.custom_checkbox_checked img.region_checked {
+    display: inline;
+}
+
+div.custom_checkbox > label > input[type=checkbox]:checked::after {
+    visibility: visible
+}
+
+div.custom_checkbox > label > input {
+    visibility: hidden;
+    position: static;
+}
+.rowlable {
+    /*margin-left:.5rem;*/
+}
+.bednumber{
+    margin:3px;
+    display:inline-block;
+}
+#bedroomrow{
+    margin-left:5px;
+}
+/*#homeBox{
+    margin-right:4%;
+    margin-left:4%;
+}*/
+.textdecoration {
+    text-decoration: underline;
+}
+@media (max-width:600px) {
+
+    .searchForm_box {
+        margin-top: 1.5rem;
+    }
+    .tourleader{
+        padding:4px 22px;
+    }
+}

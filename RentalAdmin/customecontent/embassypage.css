@@ -1,0 +1,57 @@
+﻿
+ul {
+    padding: 0
+}
+
+#embassy-baner {
+    background-image: url('../../img/embassies/banerpicembassy.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.embassy-baner-title {
+    text-align: center;
+    font-weight: bold;
+    color: rgba(255,255,255,1);
+}
+
+.background-filter {
+    background-color: rgba(0, 0, 0, 0.59);
+}
+
+svg.Path_1274_cg {
+    width: 20.938px;
+    height: 27.918px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+svg.Path_1295 {
+    width: 5.518px;
+    height: 4.324px;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+.baner-icons {
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+}
+
+.embassy-location-info {
+    font-weight: normal;
+    font-size: large;
+    color: rgba(112,112,112,1);
+    text-align: justify;
+}
+
+
+.See_All_Same_Property {
+    font-weight: normal;
+    font-size: large;
+    color: rgba(112,112,112,1);
+}
+
+
+
+

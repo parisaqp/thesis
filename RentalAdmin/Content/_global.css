@@ -1,0 +1,32 @@
+﻿.management-col {
+    min-width: 250px !important;
+    max-width: 300px !important;
+}
+
+.mvc-grid thead th,
+.mvc-grid tbody td {
+    padding: 5px 20px !important;
+    margin: 0 !important;
+    text-align: center !important;
+}
+
+.mvc-grid-headers th {
+    text-transform: uppercase !important;
+}
+
+.mvc-grid thead th input,
+.mvc-grid thead th select,
+.floatThead-table thead th input,
+.floatThead-table thead th select {
+    min-width: 50px !important;
+}
+
+.modal-body {
+    height: 70vh !important;
+    overflow-y: auto !important;
+}
+
+.photo{
+    width: 75px;
+    height: auto;
+}

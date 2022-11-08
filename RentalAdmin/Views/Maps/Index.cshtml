@@ -1,0 +1,74 @@
+﻿@model IEnumerable<RentalAdmin.Models.Map>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MapWidth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MapZoom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MapGoogleLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadBig.UploadSize)
+        </th>
+        <th>
+            عکس یک
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadSmall.UploadSize)
+        </th>
+        <th>عکس دو</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MapWidth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MapZoom)
+        </td>
+        <td>
+            @Html.ActionLink("google map link", item.MapGoogleLink)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadBig.UploadSize)
+        </td>
+        <td>
+            @Html.Partial("_ShowImage",new RentalAdmin.Models.ShowImageModel()
+       { obUpload= item.UploadBig,
+           addClass="",
+       imageWidth="100"})
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadSmall.UploadSize)
+        </td>
+        <td>
+            @Html.Partial("_ShowImage",new RentalAdmin.Models.ShowImageModel()
+      { obUpload= item.UploadSmall,
+          addClass="",
+      imageWidth="100"})
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.MapID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MapID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MapID })
+        </td>
+    </tr>
+}
+
+</table>

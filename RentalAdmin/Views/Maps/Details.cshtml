@@ -1,0 +1,18 @@
+﻿@model RentalAdmin.Models.Map
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Map</h4>
+    <hr />
+    @Html.Partial("_ShowMap",Model)
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MapID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

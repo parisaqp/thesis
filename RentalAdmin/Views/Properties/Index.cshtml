@@ -1,0 +1,174 @@
+﻿@model RentalAdmin.Models.PageViewModel.SearchViewModel
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<h3>filter properties</h3>
+<section class="container-fluid" id="filter_section">
+    <div class="row background-filter justify-content-center align-items-center ">
+        <div class="col-md-auto pt-5">
+            <form class="pt-5 center" action="~/Properties/index" method="get">
+                <div class="form-row">
+                    <div class="col-lg-9 ">
+                        @*@Html.EditorFor(model => model.topRegions.First().AreaName, new { htmlAttributes = new { @class = "form-control p-4", @id= "AreaName" ,@name= "AreaName" } })*@
+                        <input type="text" id="AreaName" class="form-control p-4" placeholder="Area" name="AreaName" list="json-datalist" autocomplete="on" value="All Areas"
+                               onClick="this.setSelectionRange(0, this.value.length)">
+                        <datalist id="json-datalist"></datalist>
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="submit" class="btn btn-defualt bg-purpul text-white btn-block btn-lg" value="SEARCH">
+                    </div>
+                </div>
+
+                <div class="form-row mt-2">
+                    <div class=" col-sm-3 col-md">
+                        <select name="PropertyTypeIDList" class="form-control">
+                            <option name="PropertyTypeIDList" value="0" selected>Property Type</option>
+                            <option name="PropertyTypeIDList" value="1">Apartment</option>
+                            <option name="PropertyTypeIDList" value="3">Office</option>
+                            <option name="PropertyTypeIDList" value="4">Villa</option>
+                            <option name="PropertyTypeIDList" value="6">Penthouse</option>
+                        </select>
+                    </div>
+                    <div class=" col-sm-3 col-md">
+                        <select name="PropertyBedroomList" class="form-control ">
+                            <option name="PropertyBedroomList" value="0" selected>Bedrooms</option>
+                            <option name="PropertyBedroomList" value="1">1</option>
+                            <option name="PropertyBedroomList" value="2">2</option>
+                            <option name="PropertyBedroomList" value="3">3</option>
+                            <option name="PropertyBedroomList" value="4">4+</option>
+                        </select>
+                    </div>
+                    @*<div class="col">
+                            <select class="form-control ">
+                                <option name="metro" selected>near metro</option>
+                                <option name="metro">near metro</option>
+                            </select>
+                        </div>*@
+                    <div class="col col-sm-3 col-md">
+                        <input name="pricemin" type="number" class="form-control " placeholder="Min price">
+                    </div>
+                    <div class="col col-sm-3 col-md">
+                        <input name="pricemax" type="number" class="form-control " placeholder="max price">
+                    </div>
+                    @*<div class="col-auto">
+                            <select class="form-control ">
+                                <option selected>Furnished</option>
+                                <option>...</option>
+                            </select>
+                        </div>*@
+                </div>
+            </form>
+            <div class="row align-items-center">
+                <div class="col">
+                    <p id="ADVANCED_SEARCH" class="text-white text-center mt-5 mb-5"><a href="~/home/SearchPage" target="_blank">ADVANCED SEARCH</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+@if (Model.properties != null && Model.properties.Count() > 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().PropertyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().PropertyOurCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().PropertyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().PropertyPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().IsExpired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().InsertDatetime)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().Area.AreaName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().AspNetUser.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().AspNetUser.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().Map.MapID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.properties.First().PropertyType.PropertyTypeName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.properties)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyOurCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsExpired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InsertDatetime)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Area.AreaName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Map.MapID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyType.PropertyTypeName)
+                </td>
+                <td>
+                    <a href="@item.getURl()">see page</a>
+                    @Html.ActionLink("manage map", "create", "maps", new { forienid = item.PropertyID, source = "property", redirect = @Request.Url.AbsoluteUri }, null) |
+
+                    @Html.ActionLink("manage gallery", "gallery", "uploads", new { id = item.PropertyID }, new { target = "_blank" }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PropertyID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PropertyID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PropertyID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@Html.PagedListPager(Model.properties as PagedList.IPagedList<RentalAdmin.Models.Property>, page => Url.Action("Index",
+    new { page=page}))
+

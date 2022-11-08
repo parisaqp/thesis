@@ -1,0 +1,76 @@
+﻿@model RentalAdmin.Models.Property
+
+<div class="item-box">
+    <div class="item-box-image">
+        <a href="@Url.Content( Model.getURl())" target="_blank">
+            <div class="text-center">
+                <img class="img-fluid rounded" loading="lazy" src="@Model.PropertyImageAddress" alt="@Model.getName()" />
+                @*<div class="item-box-image-tags">*@
+                @*<i class="fa fa-bed" aria-hidden="true"></i>*@
+                @{
+                    var res = Model.getTops();
+                    if (res != null && res.Count > 0)
+                    {
+                        foreach (var item in res)
+                        {
+                            <div class="item-box-image-tags">
+                                @*<i class="fa fa-bed" aria-hidden="true"></i>*@
+                                <span>@item</span>
+                            </div>
+                        }
+                    }
+                    if (Model.PropertyIsShortTerm)
+                    {
+                        <div class="item-box-image-tags">
+                            <span>Short Term</span>
+                        </div>
+                    }
+                }
+                @*</div>*@
+            </div>
+        </a>
+    </div>
+    <div class="item-box-content text-center">
+        <h3 class="item-box-content-title"><a href="@Url.Content( Model.getURl())" target="_blank">@Model.getNameMax()</a> </h3>
+        @if (Model.PropertyIsShortTerm)
+        {
+            <p class="item-box-content-price">$@Model.getPriceShort()</p>
+        }
+        else
+        {
+            <p class="item-box-content-price">$@Model.getPrice()</p>
+        }
+    </div>
+</div>
+
+
+
+    @*<div class="item-box">
+        <div class="item-box-image">
+            <a href="">
+                <div class="text-center">
+                    <img class="img-fluid rounded" src="~/img/download.png" />
+                    <div class="item-box-image-tags">
+                        <i class="fa fa-bed" aria-hidden="true"></i>
+                        <span>22 effected</span>
+                    </div>
+                    <div class="item-box-image-tags">
+                        <i class="fa fa-bed" aria-hidden="true"></i>
+                        <span>22 BEDROOMS</span>
+                    </div>
+                    <div class="item-box-image-tags">
+                        <i class="fa fa-bed" aria-hidden="true"></i>
+                        <span>22 BEDROOMS</span>
+                    </div>
+
+                </div>
+            </a>
+
+
+        </div>
+        <div class="item-box-content text-center">
+            <a href="#"> <h3 class="item-box-content-title">Niyavaran</h3></a>
+            <p class="item-box-content-price">$2,500</p>
+        </div>
+    </div>*@
+

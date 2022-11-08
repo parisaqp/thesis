@@ -1,0 +1,62 @@
+﻿@model List<RentalAdmin.Models.Embassy>
+@{
+    ViewBag.Title = "List of embassies in Tehran";
+    ViewBag.CurretnMenu = "embassy";
+    ViewBag.SubTitle = "We have a list of embassies in Tehran,"+
+        " in which you can find their information (phone number, website and address). Also you can check the properties nearby.";
+
+    ViewBag.HasMetaValue = true;
+    ViewBag.ImageURL = "https://www.rentalir.com/img/embassies/Group%20284.png";
+    ViewBag.URL = "https://www.rentalir.com/home/list-embassies-tehran";
+
+}
+@section AddToHead
+{
+
+    <link href="~/customecontent/embassiespage.css" rel="stylesheet" />
+}
+@* **************************************************** *@
+
+<section id="embassesBaner" class="container-fluid p-0">
+    <div class="row no-gutters justify-content-center align-items-center v-100">
+        <div class="col no-gutters">
+            <h1 class="embassesBanerTitle">@ViewBag.Title</h1>
+        </div>
+    </div>
+</section>
+
+<section id="embassesIntro" class="container py-4 col-md-10">
+    <div class="row">
+        <div class="col-md-10 m-auto embassesIntro-details p-3">
+            <p>
+                Select an embassy to see: the address, the phone number, the map and the <strong>properties nearby</strong> to rent
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<section id="flags" class="container col-md-10 p-3">
+    <div class="row justify-content-center">
+        @*<div class="col">*@
+        @foreach (var item in Model)
+        {
+        <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-1 text-center m-2 mt-4">
+            <a href="@item.getURl()" target="_blank">
+                <img src="@item.ImageBig" class="img-fluid" loading="lazy" alt="@item.EmbassyName" title="@item.EmbassyName" />
+                <span class="d-block ">@item.EmbassyName</span>
+            </a>
+        </div>
+        }
+        @*</div>*@
+    </div>
+</section>
+@* **************************************************** *@
+@section scripts
+{
+    <script>
+
+    </script>
+}
+
+

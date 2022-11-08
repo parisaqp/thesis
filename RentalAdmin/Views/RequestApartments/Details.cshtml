@@ -1,0 +1,99 @@
+﻿@model RentalAdmin.Models.RequestApartment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutGeneral.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RequestApartment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonsCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonsCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MounthCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MounthCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DaysCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaysCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WhenCome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WhenCome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RequestApartmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

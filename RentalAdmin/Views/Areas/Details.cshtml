@@ -1,0 +1,75 @@
+﻿@model RentalAdmin.Models.Area
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Area</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaSlug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaSlug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaNameInPersian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaNameInPersian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaSeoTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaSeoTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Map.MapID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Map.MapID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AreaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,388 @@
+﻿@model RentalAdmin.Models.HomeIndexViewModel
+@{
+    ViewBag.Title = "Rent apartment in Tehran";
+    ViewBag.CurretnMenu = "home";
+    ViewBag.SubTitle = "You want to live in Tehran? Find your favorite apartment in Rentalir. " +
+        "There are many furnished apartments and villas in good neighborhoods.";
+
+    ViewBag.HasMetaValue = true;
+    ViewBag.ImageURL = "~/img/logorental.png";
+    ViewBag.URL = "https://www.rentalir.com/img/tower_background_optmized.jpg";
+}
+@section AddToHead
+{
+    <link href="~/customecontent/homepage.css" rel="stylesheet" />
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "RealEstateAgent",
+        "logo": "https://www.rentalir.com/img/logorental.png",
+        "image": [
+        "https://www.rentalir.com//propertyImages/edited56.jpg",
+        "https://www.rentalir.com/propertyImages/20057/18734f22-eadf-4cbb-8b24-13b1cd1.jpg",
+        "https://www.rentalir.com/propertyImages/edited91.jpg",
+        "https://www.rentalir.com//propertyImages/edited54.jpg"
+        ],
+        "telephone": "@RentalAdmin.Models.StaticList.PhoneNumber",
+        "priceRange": "$400-30000",
+        "@@id": "https://location1.rentalir.com",
+        "name": "rentalir",
+        "address": {
+        "@@type": "PostalAddress",
+        "streetAddress": "4th floor,No 50,8th alley",
+        "addressLocality": "Tehran",
+        "addressRegion": "Khaje abdollah ansari",
+        "postalCode": "1948644974",
+        "addressCountry": "IR"
+        }
+        ,
+        "geo": {
+        "@@type": "GeoCoordinates",
+        "latitude": 35.744551,
+        "longitude": 51.453988
+        },
+        "url": "https://www.rentalir.com",
+        "openingHoursSpecification": [
+        {
+        "@@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+        "Saturday",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+        },
+        {
+        "@@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+        "Thursday",
+        "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+        }
+        ]
+        }
+    </script>
+
+
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "url": "https://www.rentalir.com",
+        "logo": "https://www.rentalir.com/img/logorental.png"
+        }
+    </script>
+}
+
+<section class="container-fluid" id="filter_section">
+    <div class="row background-filter justify-content-center align-items-center ">
+        <div class="col-md-auto pt-5">
+            <h1 class="text-white text-center filter_section_title">Rent Apartment in Iran and Tehran</h1>
+            <form class="pt-5 center" action="~/home/SearchPage" method="get">
+                <div class="form-row">
+                    <div class="col-lg-9 ">
+                        @*@Html.EditorFor(model => model.topRegions.First().AreaName, new { htmlAttributes = new { @class = "form-control p-4", @id= "AreaName" ,@name= "AreaName" } })*@
+                        <input type="text" id="AreaName" class="form-control p-4" placeholder="Area" name="AreaName" list="json-datalist" autocomplete="on" value="All Areas"
+                               onClick="this.setSelectionRange(0, this.value.length)">
+                        <datalist id="json-datalist"></datalist>
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="submit" class="btn btn-defualt bg-purpul text-white btn-block btn-lg" value="SEARCH">
+                    </div>
+                </div>
+
+                <div class="form-row mt-2">
+                    <div class=" col-sm-3 col-md">
+                        <select name="PropertyTypeIDList" class="form-control">
+                            <option name="PropertyTypeIDList" value="0" selected>Property Type</option>
+                            <option name="PropertyTypeIDList" value="1">Apartment</option>
+                            <option name="PropertyTypeIDList" value="3">Office</option>
+                            <option name="PropertyTypeIDList" value="4">Villa</option>
+                            <option name="PropertyTypeIDList" value="6">Penthouse</option>
+                        </select>
+                    </div>
+                    <div class=" col-sm-3 col-md">
+                        <select name="PropertyBedroomList" class="form-control ">
+                            <option name="PropertyBedroomList" value="0" selected>Bedrooms</option>
+                            <option name="PropertyBedroomList" value="1">1</option>
+                            <option name="PropertyBedroomList" value="2">2</option>
+                            <option name="PropertyBedroomList" value="3">3</option>
+                            <option name="PropertyBedroomList" value="4">4+</option>
+                        </select>
+                    </div>
+                    @*<div class="col">
+                            <select class="form-control ">
+                                <option name="metro" selected>near metro</option>
+                                <option name="metro">near metro</option>
+                            </select>
+                        </div>*@
+                    <div class="col col-sm-3 col-md">
+                        <input name="pricemin" type="number" class="form-control " placeholder="Min price">
+                    </div>
+                    <div class="col col-sm-3 col-md">
+                        <input name="pricemax" type="number" class="form-control " placeholder="max price">
+                    </div>
+                    @*<div class="col-auto">
+                            <select class="form-control ">
+                                <option selected>Furnished</option>
+                                <option>...</option>
+                            </select>
+                        </div>*@
+                </div>
+            </form>
+            <div class="row align-items-center">
+                <div class="col">
+                    <p id="ADVANCED_SEARCH" class="text-white text-center mt-5 mb-5"><a href="~/home/SearchPage" target="_blank">ADVANCED SEARCH</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<section id="tab_section" class="p-lg-5 p-xl-5 p-md-1 p-sm-0  pt-4 pb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-12">
+                <div class="nav nav-tabs row justify-content-center align-items-center" id="nav-tab" role="tablist">
+                    <a class="nav-item m-2 active" id="nav-contact-tab" data-toggle="tab" href="#insidenave-1" role="tab" aria-controls="nav-contact" aria-selected="false">
+                        Furnished Apartment
+                    </a>
+                    <a class="nav-item m-2 " id="nav-profile-tab" data-toggle="tab" href="#insidenave-2" role="tab" aria-controls="nav-profile" aria-selected="false">
+                        New Properties
+                    </a>
+                    <a class="nav-item m-2 " id="nav-profile-tab" data-toggle="tab" href="#insidenave-3" role="tab" aria-controls="nav-profile" aria-selected="false">
+                        Luxury Properties
+                    </a>
+                    <a class="nav-item m-2 " id="nav-home-tab" data-toggle="tab" href="#insidenave-4" role="tab" aria-controls="nav-home" aria-selected="true">
+                        Short Term
+                    </a>
+                </div>
+            </nav>
+            <div class="tab-content col-md-12" id="nav-tabContent">
+                <div class="tab-pane fade active show" id="insidenave-1" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="row">
+                        @if (Model.FurinshedProperties != null && Model.FurinshedProperties.Count > 0)
+                        {
+                            foreach (var item in Model.FurinshedProperties.Take(8))
+                            {
+                                <div class="col-md-6 col-lg-4 col-xl-3 ">
+                                    @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                                </div>
+                            }
+                        }
+                    </div>
+                    @*<div class="row">
+                            @if (Model.FurinshedProperties != null && Model.FurinshedProperties.Count > 3)
+                            {
+                                foreach (var item in Model.FurinshedProperties.Skip(3).Take(3))
+                                {
+                                    <div class="col-md-4">
+                                        @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                                    </div>
+                                }
+                            }
+                        </div>*@
+                    <div class="row">
+                        <div class="col">
+                            <p class=" text-center mt-5 mb-5 see-all-line"><a href="~/home/SearchPage?AreaName=&PropertyTypeIDList=1&PropertyFurnisheType=2" target="_blank">more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade " id="insidenave-2" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div class="row">
+                        @if (Model.NewProperties != null && Model.NewProperties.Count > 0)
+                        {
+                            foreach (var item in Model.NewProperties.Take(8))
+                            {
+                                <div class="col-md-6 col-lg-4 col-xl-3 ">
+                                    @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                                </div>
+                            }
+                        }
+                    </div>
+                    @*<div class="row">
+                            @if (Model.VillaProperties != null && Model.VillaProperties.Count > 3)
+                            {
+                                foreach (var item in Model.VillaProperties.Skip(3).Take(3))
+                                {
+                                    <div class="col-md-4">
+                                        @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                                    </div>
+                                }
+                            }
+                        </div>*@
+                    <div class="row">
+                        <div class="col">
+                            <p class=" text-center mt-5 mb-5 see-all-line"><a href="~/home/SearchPage" target="_blank">More</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="insidenave-3" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="row">
+                        @if (Model.LuxuryProperties != null && Model.LuxuryProperties.Count > 0)
+                        {
+                            foreach (var item in Model.LuxuryProperties.Take(8))
+                            {
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class=" text-center mt-5 mb-5 see-all-line"><a href="~/home/luxury-apartments-in-tehran" target="_blank">More</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="insidenave-4" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="row">
+                        @if (Model.ShortTermProperties != null && Model.ShortTermProperties.Count > 0)
+                        {
+                            foreach (var item in Model.ShortTermProperties.Take(8))
+                            {
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class=" text-center mt-5 mb-5 see-all-line"><a href="~/home/rent-short-term-apartment-in-tehran" target="_blank">More</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="regions" class="container my-5">
+    @*@if (Model.topRegions != null && Model.topRegions.Count > 0)
+        {*@
+    <div class="row justify-content-center">
+        <h2 class="p-2">The best areas for rent in Tehran </h2>
+    </div>
+    <div class="row my-3">
+        @if (Model.topRegions != null && Model.topRegions.Count > 0)
+        {
+            foreach (var item in Model.topRegions)
+            {
+                @Html.Partial("~/Views/Shared/_RegionPartialView.cshtml", item)
+            }
+        }
+
+    </div>
+    @*}*@
+
+    @*<div class="row my-3">
+            @if (Model.topRegions != null && Model.topRegions.Count > 2)
+            {
+                foreach (var item in Model.topRegions.Skip(2).Take(2))
+                {
+                    @Html.Partial("~/Views/Shared/_RegionPartialView.cshtml", item)
+                }
+            }
+        </div>
+        <div class="row my-3">
+            @if (Model.topRegions != null && Model.topRegions.Count > 2)
+            {
+                foreach (var item in Model.topRegions.Skip(2).Take(2))
+                {
+                    @Html.Partial("~/Views/Shared/_RegionPartialView.cshtml", item)
+                }
+            }
+        </div>*@
+
+    <div class="row">
+        <div class="col">
+            <p id="all_regions" class=" text-center mt-5 mb-5 see-all-line"><a href="~/home/regionspage" target="_blank">See All</a></p>
+        </div>
+    </div>
+</section>
+
+<section id="baner" class="container-fluid">
+    @if (Model.BirthDayEmbassy != null)
+    {
+        <div class="row banerrow-image justify-content-center align-items-center">
+
+            <div class="col-lg-2"></div>
+            <div class="col-md  p-2">
+                <div class="baner_box">
+                    <p id="France_National_Day_">The @Model.BirthDayEmbassy.EmbassyName National Day</p>
+                    <p id="Ceremony_in_France_Embassy_in_"> Ceremony in Embassy of @Model.BirthDayEmbassy.EmbassyName  in Tehran</p>
+                    <p id="ID14_July_2020"> @Model.BirthDayEmbassy.EmbassyBirthDate.ToShortDateString() </p>
+
+                    <p id="See_More"> <a id="See_All_Embassy_Pages" href="@Model.BirthDayEmbassy.getURl()" target="_blank" class="btn bg-purpul  pr-3 pl-3 btn-small float-right">See All Properties Near @Model.BirthDayEmbassy.EmbassyName Embassy</a></p>
+
+                </div>
+            </div>
+        </div>
+    }
+</section>
+@if (Model.TopBlogs != null && Model.TopBlogs.Count > 0)
+{
+    <section id="TOPBLOGS" class="container mb-5">
+        <div class="row tobblog_header p-4 justify-content-center align-items-center">
+            <div class="col-md-auto"><h3 id="TOP_BLOGS">TOP BLOGS</h3></div>
+            <div class="col-md"><hr /></div>
+            <div class="col-md-auto" id="See_All_Blogs"><span><a href="/home/blogindex" target="_blank">See All Blogs</a></span><i class="fa fa-caret-right" aria-hidden="true"></i></div>
+        </div>
+        <div class="tobblog_context">
+            <div class="row">
+                @foreach (var item in Model.TopBlogs)
+                {
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-xs-12 my-4">
+                        @Html.Partial("~/Views/Shared/_BlogSquare.cshtml", item)
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+
+}
+
+
+<section id="tour" class="container my-5">
+    @*@if (Model.topRegions != null && Model.topRegions.Count > 0)
+        {*@
+    <div class="row justify-content-center">
+        <h2 class="p-2">Iran Tour Packages</h2>
+    </div>
+    <div class="row my-3">
+        @if (Model.TopTour != null && Model.TopTour.Count > 0)
+        {
+            foreach (var item in Model.TopTour)
+            {
+                <div class=" col-xl-3 col-lg-4 col-md-6 col-xs-12">
+                    @Html.Partial("~/Views/Shared/_BlogSquare.cshtml", item.Blog)
+                </div>
+            }
+        }
+
+    </div>
+   
+    <div class="row">
+        <div class="col">
+            <p id="all_regions" class=" text-center mt-5 mb-5 see-all-line"><a href="~/home/Tour-In-Iran" target="_blank">See All</a></p>
+        </div>
+    </div>
+</section>
+
+@section scripts
+{
+
+    <script async src="~/customejs/autocomplete.js"></script>
+}
+
+

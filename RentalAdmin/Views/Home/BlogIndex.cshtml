@@ -1,0 +1,54 @@
+﻿@model IEnumerable<RentalAdmin.Models.ComplexBlog>
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+    ViewBag.Title = "About Iran And living In Tehran";
+    ViewBag.CurretnMenu = "blog";
+    var currenturl = Request.Url.PathAndQuery;
+    currenturl = RentalAdmin.helper.StringNumberConvertot.getUrlWihtoutPage(currenturl);
+    if (!currenturl.Contains("?"))
+    {
+        currenturl += "?";
+    }
+    ViewBag.SubTitle = "Are you coming to Iran? read some blog about living in Tehran and Iran.";
+
+    ViewBag.HasMetaValue = true;
+}
+@section AddToHead
+{
+    <link href="~/customecontent/searchpage.css" rel="stylesheet" />
+
+}
+<section id="searchForm" class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-10  searchForm_box">
+            <br />
+            <h1> @ViewBag.Title</h1>
+            <p>@ViewBag.SubTitle</p>
+        </div>
+    </div>
+</section>
+<section id="TOPBLOGS" class="container mb-5">
+    @*<div class="row tobblog_header p-4 justify-content-center align-items-center">
+        <div class="col-md-auto"><h3 id="TOP_BLOGS">TOP BLOGS</h3></div>
+     </div>*@
+    <div class="tobblog_context">
+        <div class=" row">
+            @foreach (var item in Model)
+            {
+                <div class=" col-xl-3 col-lg-4 col-md-6 col-xs-12">
+                    @Html.Partial("~/Views/Shared/_BlogSquare.cshtml", item.Blog)
+                </div>
+            }
+        </div>
+    </div>
+    @if (Model != null && Model.Count() > 0)
+    {
+        <nav aria-label="Page navigation example" class="my-3 row">
+            <div class="col-md"><hr class="other_property_hr"></div>
+            @Html.PagedListPager(Model as PagedList.IPagedList<RentalAdmin.Models.ComplexBlog>, page => currenturl + "&page=" + page, RentalAdmin.Models.StaticList.pagedlist)
+            <div class="col-md"><hr class="other_property_hr"></div>
+        </nav>
+    }
+</section>
+

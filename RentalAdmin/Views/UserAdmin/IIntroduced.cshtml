@@ -1,0 +1,89 @@
+﻿@model RentalAdmin.Models.AspNetUser
+
+@{
+    ViewBag.Title = "IIntroduced";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>IIntroduced</h2>
+
+<div>
+    <h4>AspNetUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+     
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastActivityDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastActivityDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserFName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserFName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserLName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserLName)
+        </dd>
+
+
+    </dl>
+</div>
+<div>
+    <form action="~/useradmin/IIntroduced" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="userID" value="@Model.Id"/>
+        <div class="form-group">
+             <button type="submit">این کاربر را من آوردم</button>
+        </div>
+    </form>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

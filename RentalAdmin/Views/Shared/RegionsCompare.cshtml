@@ -1,0 +1,77 @@
+﻿@model List<RentalAdmin.Models.AreaWhitRelated>
+<table class="table mytable table-dark">
+    <thead>
+        <tr class="fiestrowtable">
+            <th scope="col">
+                District
+            </th>
+            <th scope="col" class="tdmaxwidth">
+                Price of the same apartment
+            </th>
+            <th scope="col" class="tdmaxwidth">
+                Embassies
+                Nearby
+            </th>
+            <th scope="col" class="tdmaxwidth">
+                Traffic
+            </th>
+            <th scope="col" class="tdmaxwidth">
+                Weather
+            </th>
+            <th scope="col" class="tdmaxwidth">
+                Metro stations
+            </th>
+
+            <th scope="col" class="tdmaxwidth">
+                Villa
+            </th>
+            <th scope="col" class="tdmaxwidth">
+                Offices
+            </th>
+
+            <th scope="col" class="tdmaxwidthlarge">
+                Nearby Neighborhoods
+            </th>
+
+            @*<th scope="col">
+            Welfare Amenities
+        </th>*@
+
+            <th scope="col" class="tdmaxwidth">
+                link
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th scope="row" title="District">
+                @item.AreaName
+            </th>
+            <td title="Fixed property price">
+                $@item.FixedPropertyPrice
+            </td>
+            <td class=" @(item.getClass("Embassies",item.Embassies.Count().ToString()))" title="Ebmassies">@item.Embassies.Count()</td>
+            <td class=" @(item.getClass("TrafficCongestion",item.TrafficCongestion))" title="Traffic Congestion">@item.TrafficCongestion</td>
+            <td class="@(item.getClass("Climate",item.Climate))" title="Climate">@item.Climate</td>
+            <td>@item.Metroes.Count()</td>
+
+
+            <td title="villa">
+                @item.Villa
+            </td>
+            <td title="office">
+                @item.Office
+            </td>
+            @*<td>@item.WelfareAmenities</td>*@
+            <td class="tdmaxwidthlarge" title="Nearby Neighborhoods">
+                @item.AreaRelated
+            </td>
+            <td><a href="@item.getURl()" target="_blank">properties</a> </td>
+        </tr>
+        }
+
+
+    </tbody>
+</table>

@@ -1,0 +1,119 @@
+﻿/*****************************************for making bootstrap rtl********************************/
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Markazi Text';
+    font-size: 14px;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #f8ea49;
+}
+
+ul li {
+    list-style: none
+}
+.image-limitheight{
+    /*max-height:50px;*/
+    height:50px;
+}
+.addimagebtn > button{
+    border-radius:10px;
+    background-color:deepskyblue;
+}
+input[type=submit] {
+font-size:18px;
+background-color:mediumseagreen;
+border-radius:10px;
+border-width:3px;
+align-content:center;
+padding:5px;
+margin:10px;
+}
+/*wizard css*/
+.container {
+    /*width: 1200px;*/
+    margin: auto;
+}
+
+.wizard-h {
+    color: #b8b8b8;
+    margin-bottom: 0;
+    padding: 0;
+    position: relative;
+}
+
+    .wizard-h::before {
+        background: #dbdbdb none repeat scroll 0 0;
+        bottom: 0;
+        content: "";
+        height: 6px;
+        left: 8%;
+        position: absolute;
+        top: 20px;
+        width: 83%;
+    }
+
+.l-wizard-h-step {
+    float: left;
+    width: 20%;
+}
+
+.wizard-h .wizard-h__step, .wizard-h .wizard-h__step--previous, .wizard-h .wizard-h__step--current {
+    display: inline-block;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.wizard-h .wizard-h__step--previous {
+    color: #4d4d4d;
+}
+
+.wizard-h .wizard-h__step, .wizard-h .wizard-h__step--previous, .wizard-h .wizard-h__step--current {
+    display: inline-block;
+    height: auto;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+    .wizard-h .wizard-h__step .fa, .wizard-h .wizard-h__step--previous .fa, .wizard-h .wizard-h__step--current .fa {
+        background: #f5f5f5 none repeat scroll 0 0;
+        border-radius: 50%;
+        display: block;
+        font-size: 26px;
+        height: 44px;
+        left: 40%;
+        line-height: 43px;
+        position: relative;
+        width: 44px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .wizard-h .wizard-h__step--previous .fa {
+        background: #f5f5f5 none repeat scroll 0 0;
+        border: 1px solid #f5f5f5;
+        border-radius: 50%;
+        text-align: center;
+    }
+
+.wizard-h .wizard-h__step--current {
+    color: #3890bd;
+    font-weight: 700;
+}
+
+    .wizard-h .wizard-h__step span, .wizard-h .wizard-h__step--previous span, .wizard-h .wizard-h__step--current span {
+        display: inline-block;
+    }
+/*******************************************End for making bootstrap rtl*************************/
+/*******************************************my styles*******************************************/
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+﻿@model List<RentalAdmin.Models.AreaWhitRelated>
+@{
+    ViewBag.Title = "Best neighborhoods in Tehran ";
+    ViewBag.NavBar = "dark";
+    ViewBag.CurretnMenu = "region";
+
+    ViewBag.HasMetaValue = true;
+    //ViewBag.ImageURL = Model.pr();
+    ViewBag.SubTitle = "Tehran has more than 30 neighborhoods. Compare the neighborhoods in terms of price, traffic, weather etc so that you can choose the one which is appropriate for you.";
+    ViewBag.URL = "https://www.rentalir.com/home/best-neighborhoods-in-tehran";
+}
+@section AddToHead
+{
+    <link href="~/customecontent/regionspage.css" rel="stylesheet" />
+
+}
+@* **************************************************** *@
+
+<section id="region_page_baner_section" class="container mt-3 col-md-8">
+    <div class="row justify-content-center align-items-center region_page_baner_section_innerShadow p-5 ">
+        <div class="col">
+            <h1 class="region_page_baner_section_title">@ViewBag.Title</h1>
+
+            <svg class="Line_20" viewBox="0 0 925 3">
+                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="3px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Line_20" d="M 0 0 L 925 0">
+                </path>
+            </svg>
+            <p class="region_page_baner_section_comment">Tehran has more than 30 neighborhoods suitable for foreigners. We've sorted  them out below by popularity.</p>
+        <p class="region_page_baner_section_comment"><span class="region_page_baner_section_link"> <a  href="#compareneighborhoods"> compare neighborhoods  </a></span></p>
+        </div>
+    </div>
+
+</section>
+
+@*<section id="region_page_sections" class="container">
+    <div class="row m-2 justify-content-center align-items-center">*@
+<section id="regions" class="container-fluid p-lg-4 p-xl-5 p-md-3 p-sm-1 ">
+    @*@if (Model.topRegions != null && Model.topRegions.Count > 0)
+        {*@
+    <div class="row my-3 justify-content-center">
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                @Html.Partial("~/Views/Shared/_RegionPartialView.cshtml", item)
+            }
+        }
+    </div>
+</section>
+<section id="compareneighborhoods">
+    
+    <div class="col-md-12 overflow-auto p-5" id="containercompareneighborhoods">
+        <h3>Compare Best neighborhoods in Theran to find your best place in Tehran</h3>
+        <p>
+            The comprehensive and summarised table of neighborhoods and Factors. (read more about<a target="_blank" href="https://www.rentalir.com/blog/6/a-comprehensive-guide-where-to-live-in-tehran"> neighborhoods in Tehran</a>)
+        </p>
+        @Html.Partial("~/Views/Shared/RegionsCompare.cshtml",Model)
+       
+    </div>
+</section>
+
+
+@* **************************************************** *@
+@section scripts
+{
+
+}
+
+

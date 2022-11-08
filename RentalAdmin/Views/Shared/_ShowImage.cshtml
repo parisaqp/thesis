@@ -1,0 +1,5 @@
+﻿@model RentalAdmin.Models.ShowImageModel
+
+    <img src="@(Model.obUpload.BasicAddressVirtual+Model.obUpload.UploadAddressOffSet)"
+         id="@("image"+Model.obUpload.UploadID)" name="@("image"+Model.obUpload.UploadID)" width="@Model.imageWidth"/>
+

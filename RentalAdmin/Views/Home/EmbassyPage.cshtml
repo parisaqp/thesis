@@ -1,0 +1,134 @@
+﻿@model RentalAdmin.Models.PageViewModel.EmbassyViewModel
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = Model.embassy.getName();
+    ViewBag.CurretnMenu = "embassy";
+    ViewBag.SubTitle = "Read about " + Model.embassy.EmbassyName + " embassy in Tehran. check phone, website and address. see nearby properties to rent.";
+
+    ViewBag.HasMetaValue = true;
+    ViewBag.ImageURL = Model.embassy.ImageBig;
+    ViewBag.URL = Model.embassy.getURl();
+}
+@section AddToHead
+{
+    <link href="~/customecontent/embassypage.css" rel="stylesheet" />
+}
+@* **************************************************** *@
+
+<section id="embassy-baner" class="container-fluid">
+    <div class="row justify-content-center align-items-center background-filter ">
+        <div class="col-md-10 text-center p-5">
+            @if (Model.isCelebrate)
+            {
+            <span class="baner-icons">Congratulations & Best Wishes/  @Model.embassy.EmbassyName National Day</span>
+            }
+            <p><img src="@Model.embassy.ImageBig" class="img-fluid" loading="lazy" alt="@Model.embassy.getName()" /></p>
+            <h1 class="embassy-baner-title">@Model.embassy.getTitle()</h1>
+            <div class="row justify-content-center align-items-center my-3">
+                <div class="col-auto p-2">
+                    <img src="~/img/embassies/icons_baner/pin.png" loading="lazy" class="img-fluid" alt="@Model.area.getName()" />
+                    <span class="baner-icons"><a href="@Model.area.getURl()">@Model.area.getName()</a> </span>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.embassy.EmbassyWebsite))
+                {
+                    <div class="col-auto p-2">
+                        <img src="~/img/embassies/icons_baner/internet.png" loading="lazy" class="img-fluid" alt="" />
+                        <span class="baner-icons"><a href="http://@Model.embassy.EmbassyWebsite" target="_blank" rel="nofollow"> @Model.embassy.EmbassyWebsite</a></span>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.embassy.EmbassyEmail))
+                {
+                    <div class="col-auto p-2">
+                        <img src="~/img/embassies/icons_baner/email-white-op2.png" class="img-fluid" alt="" />
+                        <span class="baner-icons">@Model.embassy.EmbassyEmail</span>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.embassy.EbmbassyPhone))
+                {
+                    <div class="col-auto p-2">
+                        <img src="~/img/embassies/icons_baner/telephone.png" class="img-fluid" alt="" />
+                        <span class="baner-icons">+@Model.embassy.EbmbassyPhone</span>
+                    </div>
+                }
+
+
+
+                <div class="col-auto p-2">
+                    <img src="~/img/embassies/icons_baner/glasses.png" class="img-fluid" alt="" />
+                    <span class="baner-icons">@Model.embassy.EmbassyBirthDate.ToShortDateString()</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="embassy-location" class="container-fluid  p-lg-4 p-xl-5 p-md-3 p-sm-1 ">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <p class="embassy-location-info">
+                To find accomodations near @Model.embassy.getName(), check properties below.
+            </p>
+            <p class="embassy-location-info">
+                The Embassy of @Model.embassy.EmbassyName is located in<strong> @Model.area.AreaName  Neighborhood</strong>.
+                You can find suitable properties in @Model.area.AreaName and nearby neighborhoods.
+                <strong>The following properties are located in @Model.area.AreaName and nearby neighborhoods.</strong>
+            </p>
+            <p class="embassy-location-info">
+
+            </p>
+        </div>
+        @if (Model.map != null && Model.map.UploadBig != null)
+        {
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img loading="lazy" src="@Model.map.UploadBig.GetPublicUrl()" class="rounded" alt="map of @Model.embassy.getName()">
+                </div>
+            </div>
+        }
+
+    </div>
+</section>
+
+<section id="homeBox" class="container-fluid mt-2  p-lg-4 p-xl-5 p-md-3 p-sm-1 " >
+    <div class="row tobblog_header p-4 justify-content-center align-items-center">
+        <div class="col-md-auto"><h5 class="other_property_title">Properties Near @Model.embassy.getName()</h5></div>
+        <div class="col-md"><hr class="other_property_hr" /></div>
+        <div class="col-md-auto" id="See_All_Blogs">
+            <span class="See_All_Same_Property"><a href="@Url.Action("searchpage","home",new {AreaName=Model.area.AreaName+","+ Model.areaWhitRelated.AreaRelated })">See All</a></span><span class="ml-auto">
+                <svg class="Polygon_7" viewBox="0 0 11 9">
+                    <path fill="rgba(112,112,112,1)" id="Polygon_7" d="M 5.499999523162842 0 L 11 9 L 0 9 Z">
+                    </path>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <div class="row my-3">
+        @if (Model.properties != null && Model.properties.Count() > 0)
+        {
+            foreach (var item in Model.properties)
+            {
+                <div class="col-sm-10 col-md-6 col-lg-4 col-xl-3 ">
+                    @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                </div>
+            }
+
+        }
+    </div>
+    <nav aria-label="Page navigation example" class="my-3 row">
+        <div class="col-md"><hr class="other_property_hr"></div>
+        @Html.PagedListPager(Model.properties as PagedList.IPagedList<RentalAdmin.Models.Property>, page => Url.Action("EmbassyPage", "home",
+      new {page}), RentalAdmin.Models.StaticList.pagedlist)
+        <div class="col-md"><hr class="other_property_hr"></div>
+    </nav>
+</section>
+
+@* **************************************************** *@
+@section scripts
+{
+    <script>
+
+    </script>
+}
+
+

@@ -1,0 +1,98 @@
+﻿@model IEnumerable<RentalAdmin.Models.Property>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Rent short term apartment in Tehran";
+    ViewBag.CurretnMenu = "short-term";
+    var currenturl = Request.Url.PathAndQuery;
+    currenturl = RentalAdmin.helper.StringNumberConvertot.getUrlWihtoutPage(currenturl);
+    if (!currenturl.Contains("?"))
+    {
+        currenturl += "?";
+    }
+    ViewBag.SubTitle = "Reserve and Rent short term apartment in Tehran. Book your Tehran vacation rentals from many short-term rentals listings.";
+
+    ViewBag.HasMetaValue = true;
+}
+@section AddToHead
+{
+    <link href="~/customecontent/searchpage.css" rel="stylesheet" />
+
+}
+@* ********************************************************************** *@
+
+<section id="banerSearch" class="container-fluid p-0">
+    <div class="row no-gutters">
+        <div class="col no-gutters ">
+            <img src="https://www.rentalir.com/img/search/banersearch.jpg" class="img-fluid mx-auto d-block" alt="" />
+        </div>
+    </div>
+</section>
+
+<section id="searchForm" class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-10  searchForm_box">
+            <br />
+            <h1> @ViewBag.Title</h1>
+            <p>Reserve and Rent short term apartment in Tehran. Find and book short-term rentals in Tehran from many properties.</p>
+            <p>Get in touch with us via Whatsapp to see which one is available. You can also book apartments with crypto.</p>
+        </div>
+    </div>
+</section>
+
+<section id="searchFilter" class="container my-5">
+    @*<div class="row searchFilterRow  justify-content-center align-items-center p-3">
+            <div class="col">
+                <span class="badge badge-secondary p-2">Apartment</span>
+                <span class="badge badge-secondary p-2">3 Bedrooms</span>
+                <span class="badge badge-secondary p-2">1 Bethrooms</span>
+                <span class="badge badge-secondary p-2">Furnished</span>
+                <span class="badge badge-secondary p-2">$1000 - $2000</span>
+            </div>
+            <div class="col-auto ml-auto">
+                <div class="changeSearch">Change Search</div>
+                <div>
+                    <svg class="Line_21" viewBox="0 0 150 1">
+                        <path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Line_21" d="M 150 0 L 0 0">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </div>*@
+</section>
+
+<section id="homeBox">
+    <div class="container-lg">
+        <div class="row my-3 ">
+            @if (Model != null&& Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-md-6 col-lg-4 col-xl-3 ">
+                        @Html.Partial("~/Views/Shared/_PropertySquarPartial.cshtml", item)
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No property found. Please try again.</p>
+            }
+
+
+        </div>
+        @if (Model != null && Model.Count() > 0)
+        {
+            <nav aria-label="Page navigation example" class="my-3 row">
+                <div class="col-md"><hr class="other_property_hr"></div>
+                @Html.PagedListPager(Model as PagedList.IPagedList<RentalAdmin.Models.Property>, page => currenturl + "&page=" + page, RentalAdmin.Models.StaticList.pagedlist)
+                <div class="col-md"><hr class="other_property_hr"></div>
+            </nav>
+        }
+    </div>
+
+
+</section>
+
+
+
+
+

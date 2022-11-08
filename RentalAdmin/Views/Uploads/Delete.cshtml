@@ -1,0 +1,66 @@
+﻿@model RentalAdmin.Models.Upload
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutGentelella.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Upload</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadContentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadContentType)
+        </dd>
+
+        <dt>
+          <img  src="@(Model.BasicAddressVirtual+Model.UploadAddressOffSet)"/>
+        </dt>
+
+      
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadSize)
+        </dd>
+
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadSourceIsOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadSourceIsOut)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
